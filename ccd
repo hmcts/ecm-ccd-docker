@@ -669,6 +669,9 @@ case $command in
     login)
         ccd_login
         ;;
+    restart-api)
+        ccd_compose "restart ccd-definition-store-api ccd-data-store-api"
+        ;;
     *)
         usage
         ;;

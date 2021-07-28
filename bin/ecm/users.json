@@ -1,0 +1,5 @@
+[
+  {"email": "ccd.docker.default@hmcts.net", "roles": "ccd-import", "lastName": "Default CCD_Docker"},
+  {"email": "ecmleeds@mailinator.com", "roles": "caseworker,caseworker-employment,caseworker-employment-leeds", "lastName": "Leeds"},
+  {"email": "ecmnewcastle@mailinator.com", "roles": "caseworker,caseworker-employment,caseworker-employment-newcastle", "lastName": "Newcastle"}
+]
