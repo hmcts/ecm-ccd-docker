@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+  tornado:
+    build: https://raw.githubusercontent.com/docmosis/tornado-docker/master/Dockerfile
+    ports:
+      - "9095:8080"
+    volumes:
+      - "${TORNADO_TEMPLATES_DIRECTORY}:/home/docmosis/templates"
+    environment:
+      DOCMOSIS_KEY: "${TORNADO_LICENSE_KEY}"
+      DOCMOSIS_SITE: "Free Trial Tornado"
