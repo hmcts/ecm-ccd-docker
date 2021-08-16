@@ -1,9 +1,0 @@
-[
-  { "role": "caseworker", "security_classification": "PUBLIC" },
-  { "role": "ccd-import", "security_classification": "PUBLIC" },
-  { "role": "caseworker-employment", "security_classification": "PUBLIC" },
-  { "role": "caseworker-employment-api", "security_classification": "PUBLIC" },
-  { "role": "caseworker-employment-leeds", "security_classification": "PUBLIC" },
-  { "role": "caseworker-employment-newcastle", "security_classification": "PUBLIC" },
-  { "role": "caseworker-employment-scotland", "security_classification": "PUBLIC" }
-]

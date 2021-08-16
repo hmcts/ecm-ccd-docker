@@ -15,6 +15,28 @@
 - [Remarks](#remarks)
 - [License](#license)
 
+## ECM 
+
+```bash
+exec bash
+source ./bin/set-environment-variables.sh
+source ./bin/ecm/set-ecm-environment-variables.sh
+./ccd login
+./ccd compose pull
+./ccd init
+./ccd compose up -d
+./bin/ecm/init-ecm.sh
+# if the response is
+# curl: (52) Empty reply from server
+# then wait a minute and retry
+./bin/ccd-import-definition.sh <path-to-ccd-files>/ccd-definitions.xlsx
+cd <path-to-ethos-repl-docmosis-service>/src/main/resources/sqlscripts
+./setup-ethos-db.sh
+```
+
+You should now be able to go straight to the CCD case list page:
+http://localhost:3451/
+
 ## Prerequisites
 
 - [JDK 11](https://openjdk.java.net/projects/jdk/11/)
