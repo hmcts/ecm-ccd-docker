@@ -6,16 +6,15 @@ services:
     image: "${XUI_MANAGE_CASES_USE_LOCAL-hmctspublic.azurecr.io/}xui/webapp:${XUI_MANAGE_CASES_TAG:-latest}"
     container_name: xui-manage-cases
     environment:
-      FEATURE_APP_INSIGHTS_ENABLED: "true"
+      FEATURE_APP_INSIGHTS_ENABLED: "false"
       FEATURE_SECURE_COOKIE_ENABLED: "false"
       FEATURE_REDIS_ENABLED: "false"
-      JURISDICTIONS: AUTOTEST1,DIVORCE,PROBATE,BEFTA_JURISDICTION_3,BEFTA_JURISDICTION_2,BEFTA_JURISDICTION_1,IA,SSCS,BEFTA_MASTER
-
+      JURISDICTIONS: EMPLOYMENT
       MICROSERVICE: xui_webapp
       PROTOCOL: http
       XUI_ENV: local
-
       SERVICES_DOCUMENTS_API: http://dm-store:8080
+      SERVICES_DOCUMENTS_API_V2: http://ccd-case-document-am-api:4455
       SERVICES_PAYMENTS_URL: http://wiremock:8080
       SERVICES_EM_ANNO_API: http://ccd-api-gateway:3453
       SERVICES_CCD_COMPONENT_API: http://ccd-api-gateway:3453
@@ -26,6 +25,7 @@ services:
       SERVICES_IDAM_INDEX_URL: /
       SERVICES_IDAM_OAUTH_CALLBACK_URL: /oauth2/callback
       SERVICES_S2S: http://service-auth-provider-api:8080
+      SERVICES_ROLE_ASSIGNMENT_API: "${ROLE_ASSIGNMENT_URL:-http://am-role-assignment-service:4096}"
       REDISCLOUD_URL: http://localhost:6780
       SYSTEM_USER_NAME: "dummy"
       SYSTEM_USER_PASSWORD: "dummy"
@@ -37,7 +37,7 @@ services:
       IDAM_SECRET: xui_webapp_secrect
       S2S_SECRET: "${BEFTA_S2S_CLIENT_SECRET_OF_XUI_WEBAPP}"
 
-      LAUNCH_DARKLY_CLIENT_ID: 1
+      LAUNCH_DARKLY_CLIENT_ID: "${XUI_LAUNCH_DARKLY_CLIENT_ID}"
 
     ports:
       - 3455:3000
