@@ -1,5 +1,5 @@
-# CCD Docker :whale:
-
+# ECM CCD Docker :whale:
+- [ECM quick start](#ecm-quick-start)
 - [Prerequisites](#prerequisites)
 - [Quick start](#quick-start)
 - [Using CCD](#using-ccd)
@@ -15,8 +15,19 @@
 - [Remarks](#remarks)
 - [License](#license)
 
-## ECM 
+## ECM quick start
+This project is a customised version of [ccd-docker](https://github.com/hmcts/ccd-docker) to support a CCD environment for use in ECM development.
 
+* ExUI is enabled for case access
+* Docmosis Tornado is enabled for document generation
+* IdAM stub is used rather than the full IdAM implementation
+* Elasticsearch enabled for case search
+
+The following commands will setup a CCD docker environment. It is assumed that you have the following environment variables set:
+* TORNADO_LICENSE_KEY
+* TORNADO_TEMPLATES_DIRECTORY
+* ADDRESS_LOOKUP_TOKEN
+* XUI_LAUNCH_DARKLY_CLIENT_ID
 ```bash
 exec bash
 source ./bin/set-environment-variables.sh
@@ -32,10 +43,15 @@ source ./bin/ecm/set-ecm-environment-variables.sh
 ./bin/ccd-import-definition.sh <path-to-ccd-files>/ccd-definitions.xlsx
 cd <path-to-ethos-repl-docmosis-service>/src/main/resources/sqlscripts
 ./setup-ethos-db.sh
+cd <path-to-ecm-consumer>/src/main/resources/sqlscripts
+./setup-ecmconsumer-db.sh
 ```
+You should now be able to navigate to either:
 
-You should now be able to go straight to the CCD case list page:
-http://localhost:3451/
+UI | URL
+------------ | -------------
+ExUI | http://localhost:3455/
+CCD UI | http://localhost:3451/
 
 ## Prerequisites
 
