@@ -53,6 +53,11 @@ UI | URL
 ExUI | http://localhost:3455/
 CCD UI | http://localhost:3451/
 
+### dm-store mock
+It is possible to substitute the dm-store for a mock dm-store. However, the mock only supports the /health endpoint so that the ethos-repl-docmosis service can start without any errors. The only reason to use dm-store mock is to reduce the resources consumed by ccd-docker when you don't need it in development.
+
+To use dm-store mock, remove dm-store and tornado from defaults.conf and replace with dm-store-mock. You will also need to remove the dm-store containers if they were already running. ./ccd compose up -d will bring the changes into effect.
+
 ## Prerequisites
 
 - [JDK 11](https://openjdk.java.net/projects/jdk/11/)
