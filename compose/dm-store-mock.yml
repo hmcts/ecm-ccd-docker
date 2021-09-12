@@ -1,5 +1,5 @@
 services:
-  dm-store-mock:
+  dm-store:
     image: rodolpheche/wiremock
     volumes:
       - ./mocks/mappings/dm-store:/home/wiremock/mappings/dm-store:rw
