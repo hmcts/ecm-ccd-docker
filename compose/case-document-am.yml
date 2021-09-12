@@ -25,7 +25,7 @@ services:
       # 5005:5005
     depends_on:
       - ccd-data-store-api
-      - dm-store
+      - "${DM_STORE_USE_MOCK-dm-store}"
       - service-auth-provider-api
     networks:
       - ccd-network

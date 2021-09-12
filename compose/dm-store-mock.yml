@@ -1,0 +1,11 @@
+services:
+  dm-store-mock:
+    image: rodolpheche/wiremock
+    volumes:
+      - ./mocks/mappings/dm-store:/home/wiremock/mappings/dm-store:rw
+    ports:
+      - 4506:8080
+
+networks:
+  ccd-network:
+    external: true
