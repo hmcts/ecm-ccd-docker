@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "GET",
-    "urlPath": "/details"
+    "urlPath": "/o/userinfo"
   },
   "response": {
     "status": 200,
@@ -9,8 +9,7 @@
       "Content-Type": "application/json"
     },
     "jsonBody": {
-      "sub": "ecmdev@mailinator.com",
-      "uid": "123456",
+      "email": "ecmdev@mailinator.com",
       "roles": [
         "caseworker",
         "ccd-import",
@@ -30,10 +29,11 @@
         "caseworker-employment-wales",
         "caseworker-employment-watford"
       ],
+      "sub": "ecmdev@mailinator.com",
+      "uid": "123456",
       "name": "ECM Local Dev (Stub)",
       "given_name": "ECM",
       "family_name": "Local Dev (Stub)"
     }
-
   }
 }
