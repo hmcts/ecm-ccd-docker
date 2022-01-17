@@ -46,12 +46,9 @@ cd <path-to-ethos-repl-docmosis-service>/src/main/resources/sqlscripts
 cd <path-to-ecm-consumer>/src/main/resources/sqlscripts
 ./setup-ecmconsumer-db.sh
 ```
-You should now be able to navigate to either:
+You should now be able to navigate to ExUI:
 
-UI | URL
------------- | -------------
-ExUI | http://localhost:3455/
-CCD UI | http://localhost:3451/
+http://localhost:3455/
 
 ### dm-store mock
 It is possible to substitute the dm-store for a mock dm-store. However, the mock only supports the /health endpoint so that the ethos-repl-docmosis service can start without any errors. The only reason to use dm-store mock is to reduce the resources consumed by ccd-docker when you don't need it in development.
