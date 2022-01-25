@@ -25,18 +25,23 @@ the main ccd-docker repository.
 
 ## Setup
 
+### Environment Variables
+
+First, create a .env file that will store environment variables that are specific to you.
+
+```
+cp ./compose/.env.example ./compose/.env
+```
+
+Edited the .env file created and set the environment variables.
+
 ### ECM
 
 The following commands will setup a CCD docker environment for developing ECM (not Reform ET).
-It is assumed that you have the following environment variables set:
-* TORNADO_LICENSE_KEY
-* TORNADO_TEMPLATES_DIRECTORY
-* ADDRESS_LOOKUP_TOKEN
-* XUI_LAUNCH_DARKLY_CLIENT_ID
+
 ```bash
 exec bash
 source ./bin/set-environment-variables.sh
-source ./bin/ecm/set-ecm-environment-variables.sh
 ./ccd login
 ./ccd compose pull
 ./ccd init
@@ -54,17 +59,11 @@ cd <path-to-ecm-consumer>/src/main/resources/sqlscripts
 
 ### RET ECM
 
-The following commands will setup a CCD docker environment for developing ECM as part of Reform ET.
-It is assumed that you have the following environment variables set:
-* ADDRESS_LOOKUP_TOKEN
-* XUI_LAUNCH_DARKLY_CLIENT_ID
-
-You should see the readme for 
+The following commands will setup a CCD docker environment for developing ECM in Reform ET.
 
 ```bash
 exec bash
 source ./bin/set-environment-variables.sh
-source ./bin/ecm/set-ecm-environment-variables.sh
 ./ccd login
 ./ccd compose pull
 ./ccd init
@@ -86,7 +85,7 @@ You should now be able to navigate to ExUI:
 http://localhost:3455/
 
 ## Docmosis Reports
-To enable reports to be generated you will need to have the following environment variables set:
+To enable reports to be generated you will need to have the following environment variables set (see .env file):
 * TORNADO_LICENSE_KEY
 * TORNADO_TEMPLATES_DIRECTORY
 
@@ -108,6 +107,18 @@ don't need it in development.
 To use dm-store mock, remove dm-store and tornado from defaults.conf and replace with dm-store-mock.
 You will also need to remove the dm-store containers if they were already running.
 ./ccd compose up -d will bring the changes into effect.
+
+# Clean
+If you wish to clear down your system including dropping the database
+```
+./bin/ecm/ecm-clean.sh
+```
+This removes all containers but keeps the images.
+
+If you wish to remove everything including images:
+```
+./bin/ecm/docker-clean.sh
+```
 
 ## LICENSE
 
