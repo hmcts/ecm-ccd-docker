@@ -84,6 +84,23 @@ You should now be able to navigate to ExUI:
 
 http://localhost:3455/
 
+Note that after a system restart you only have to execute these steps to start CCD Docker again:
+```bash
+exec bash
+source ./bin/set-environment-variables.sh
+./ccd compose up -d
+```
+
+## Updating Components
+To update the common components in the environment to the latest versions:
+```bash
+exec bash
+source ./bin/set-environment-variables.sh
+./ccd login
+./ccd compose pull
+./ccd compose up -d
+```
+
 ## Docmosis Reports
 To enable reports to be generated you will need to have the following environment variables set (see .env file):
 * TORNADO_LICENSE_KEY
