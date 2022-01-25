@@ -125,7 +125,7 @@ To use dm-store mock, remove dm-store and tornado from defaults.conf and replace
 You will also need to remove the dm-store containers if they were already running.
 ./ccd compose up -d will bring the changes into effect.
 
-# Clean
+## Clean Environment
 If you wish to clear down your system including dropping the database
 ```
 ./bin/ecm/ecm-clean.sh
