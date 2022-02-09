@@ -30,3 +30,5 @@ services:
       - service-auth-provider-api
     networks:
       - ccd-network
+    volumes:
+      - ${PWD}/resources/service_config.json:/opt/app/service_config.json
