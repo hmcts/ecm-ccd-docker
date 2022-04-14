@@ -15,5 +15,8 @@
   { "role": "caseworker-employment-newcastle", "security_classification": "PUBLIC" },
   { "role": "caseworker-employment-scotland", "security_classification": "PUBLIC" },
   { "role": "caseworker-employment-wales", "security_classification": "PUBLIC" },
-  { "role": "caseworker-employment-watford", "security_classification": "PUBLIC" }
+  { "role": "caseworker-employment-watford", "security_classification": "PUBLIC" },
+  { "role": "caseworker-employment-etjudge", "security_classification": "PUBLIC" },
+  { "role": "caseworker-employment-etjudge-englandwales", "security_classification": "PUBLIC" },
+  { "role": "caseworker-employment-etjudge-scotland", "security_classification": "PUBLIC" }
 ]
