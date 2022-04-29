@@ -27,7 +27,8 @@
         "caseworker-employment-newcastle",
         "caseworker-employment-scotland",
         "caseworker-employment-wales",
-        "caseworker-employment-watford"
+        "caseworker-employment-watford",
+        "citizen"
       ],
       "sub": "ecmdev@mailinator.com",
       "uid": "123456",
