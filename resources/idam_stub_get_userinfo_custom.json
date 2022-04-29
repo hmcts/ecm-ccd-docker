@@ -11,6 +11,7 @@
     "jsonBody": {
       "email": "ecmdev@mailinator.com",
       "roles": [
+        "caseworker",
         "ccd-import",
         "caseworker-employment",
         "caseworker-employment-englandwales",
