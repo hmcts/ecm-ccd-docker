@@ -28,7 +28,8 @@
         "caseworker-employment-newcastle",
         "caseworker-employment-scotland",
         "caseworker-employment-wales",
-        "caseworker-employment-watford"
+        "caseworker-employment-watford",
+        "citizen"
       ],
       "name": "ECM Local Dev (Stub)",
       "given_name": "ECM",

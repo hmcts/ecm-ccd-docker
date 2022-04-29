@@ -1,0 +1,21 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/v1/users/123456"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "id": "123456",
+      "email": "ecmdev@mailinator.com",
+      "forename": "ECM",
+      "surname": "Local Dev (Stub)",
+      "roles": [
+        "citizen"
+      ]
+    }
+  }
+}

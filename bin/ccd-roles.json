@@ -18,5 +18,6 @@
   { "role": "caseworker-employment-watford", "security_classification": "PUBLIC" },
   { "role": "caseworker-employment-etjudge", "security_classification": "PUBLIC" },
   { "role": "caseworker-employment-etjudge-englandwales", "security_classification": "PUBLIC" },
-  { "role": "caseworker-employment-etjudge-scotland", "security_classification": "PUBLIC" }
+  { "role": "caseworker-employment-etjudge-scotland", "security_classification": "PUBLIC" },
+  { "role": "citizen", "security_classification": "PUBLIC" }
 ]
