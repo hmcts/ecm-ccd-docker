@@ -225,6 +225,8 @@ services:
       - ${PWD}/resources/idam_stub_get_details_custom.json:/opt/app/wiremock/mappings/idam/idam_get_details.json
       - ${PWD}/resources/idam_stub_get_userinfo_custom.json:/opt/app/wiremock/mappings/idam/idam_get_userinfo.json
       - ${PWD}/resources/idam_stub_oauth2_authorize.json:/opt/app/wiremock/mappings/idam_oauth2_authorize.json
+      - ${PWD}/resources/idam_stub_get_user_by_id.json:/opt/app/wiremock/mappings/idam_get_user_by_id.json
+
 volumes:
   ccd-docker-ccd-shared-database-data-v11:
   #wiremock:
