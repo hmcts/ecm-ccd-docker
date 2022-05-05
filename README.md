@@ -96,12 +96,11 @@ http://localhost:3455/
 | System | Login                    | Purpose                                      |
 |:-------|:-------------------------|:---------------------------------------------|
 | RET    | et.dev@hmcts.net         | Login with all roles                         |
- | RET    | et.caseworker@hmcts.net  | Login with only roles valid for a caseworker |
- | RET    | et.service@hmcts.net     | Service account login for et-msg-handler     |
+| RET    | et.caseworker@hmcts.net  | Login with only roles valid for a caseworker |
+| RET    | et.service@hmcts.net     | Service account login for et-msg-handler     |
 | ECM    | ecm.dev@hmcts.net        | Login with all roles                         |
 | ECM    | ecm.caseworker@hmcts.net | Login with only roles valid for a caseworker |
 | ECM    | ecm.service@hmcts.net    | Service account login for ecm-consumer       |
-
 
 All logins use a password of Pa55word11
 
