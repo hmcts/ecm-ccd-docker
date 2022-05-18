@@ -28,6 +28,7 @@ services:
       - ccd-data-store-api
       - dm-store
       - service-auth-provider-api
+      - rse-idam-simulator
     networks:
       - ccd-network
     volumes:

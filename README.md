@@ -5,7 +5,7 @@ This project is a customised version of [ccd-docker](https://github.com/hmcts/cc
 for use in ECM and RET ECM development.
 
 * ExUI is used for case access
-* IdAM stub is used rather than the full IdAM implementation
+* [RSE IdAM Simulator](https://github.com/hmcts/rse-idam-simulator) is used rather than the full IdAM implementation
 * Elasticsearch enabled for case search
 * Docmosis Tornado can be enabled for document and report generation
 
@@ -59,6 +59,14 @@ cd <path-to-ecm-consumer>/src/main/resources/sqlscripts
 
 ### RET ECM
 
+The setup script will optionally import CCD configuration for you if you set these environment variables
+
+| Variable                     | Purpose                                                                                                          |
+|:-----------------------------|:-----------------------------------------------------------------------------------------------------------------|
+| ENGLANDWALES_CCD_CONFIG_PATH | Path to local repository for [EnglandWales CCD config](https://github.com/hmcts/et-ccd-definitions-englandwales) |
+| SCOTLAND_CCD_CONFIG_PATH     | Path to local repository for [Scotland CCD config](https://github.com/hmcts/et-ccd-definitions-scotland)         |
+| ADMIN_CCD_CONFIG_PATH        | Path to local repository for [ECM Admin CCD config](https://github.com/hmcts/et-ccd-definitions-admin)           |
+
 The following commands will setup a CCD docker environment for developing ECM in Reform ET.
 
 ```bash
@@ -72,7 +80,6 @@ source ./bin/set-environment-variables.sh
 # if the response is
 # curl: (52) Empty reply from server
 # then wait a minute and retry
-./bin/ccd-import-definition.sh <path-to-ccd-files>/ccd-definitions.xlsx
 ```
 
 To setup the ECM specific services see:
@@ -84,7 +91,23 @@ You should now be able to navigate to ExUI:
 
 http://localhost:3455/
 
-Note that after a system restart you only have to execute these steps to start CCD Docker again:
+### Logins
+
+| System | Login                    | Purpose                                      |
+|:-------|:-------------------------|:---------------------------------------------|
+| RET    | et.dev@hmcts.net         | Login with all roles                         |
+| RET    | et.caseworker@hmcts.net  | Login with only roles valid for a caseworker |
+| RET    | et.service@hmcts.net     | Service account login for et-msg-handler     |
+| ECM    | ecm.dev@hmcts.net        | Login with all roles                         |
+| ECM    | ecm.caseworker@hmcts.net | Login with only roles valid for a caseworker |
+| ECM    | ecm.service@hmcts.net    | Service account login for ecm-consumer       |
+
+All logins use a password of Pa55word11
+
+---
+Note that after a docker restart you only have to execute these steps to start CCD Docker again.
+
+You also need to run init-ecm.sh again because the IdAM Simulator does not persist logins.
 ```bash
 exec bash
 source ./bin/set-environment-variables.sh
@@ -99,7 +122,25 @@ source ./bin/set-environment-variables.sh
 ./ccd login
 ./ccd compose pull
 ./ccd compose up -d
+# once the system is up then run
+./bin/ecm/init-ecm.sh
 ```
+
+## Importing CCD Config
+If environment variables have been set as described previously, then it is possible to import EnglandWales, Scotland or
+ECM Admin config using
+```bash
+./bin/ecm/import-ccd-config.sh e | s | a
+```
+where
+
+e = EnglandWales
+
+s = Scotland
+
+a = ECM Admin
+
+The import script will use the local version of the XLSX CCD config spreadsheet.
 
 ## Docmosis Reports
 To enable reports to be generated you will need to have the following environment variables set (see .env file):

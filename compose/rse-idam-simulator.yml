@@ -1,0 +1,30 @@
+---
+version: "3"
+
+services:
+  rse-idam-simulator:
+    image: "hmctspublic.azurecr.io/hmcts/rse/rse-idam-simulator:latest"
+    container_name: rse-idam-simulator
+    ports:
+      - "5000:5000"
+    environment:
+      # these environment variables are used by java-logging library
+      ROOT_APPENDER:
+      JSON_CONSOLE_PRETTY_PRINT:
+      ROOT_LOGGING_LEVEL:
+      REFORM_SERVICE_TYPE:
+      REFORM_SERVICE_NAME:
+      REFORM_TEAM:
+      REFORM_ENVIRONMENT:
+      LOGBACK_DATE_FORMAT:
+      LOGBACK_REQUIRE_THREAD:
+      LOGBACK_REQUIRE_ALERT_LEVEL: "false"
+      LOGBACK_REQUIRE_ERROR_CODE: "false"
+      SERVER_PORT: 5000
+      SIMULATOR_OPENID_BASE_URL: http://rse-idam-simulator:5000
+    networks:
+      - ccd-network
+
+networks:
+  ccd-network:
+    external: true
