@@ -64,8 +64,8 @@ The setup script will optionally import CCD configuration for you if you set the
 | Variable                     | Purpose                                                                                                          |
 |:-----------------------------|:-----------------------------------------------------------------------------------------------------------------|
 | ENGLANDWALES_CCD_CONFIG_PATH | Path to local repository for [EnglandWales CCD config](https://github.com/hmcts/et-ccd-definitions-englandwales) |
-| SCOTLAND_CCD_CONFIG_PATH     | Path to local repository for [Scotland CCD config](https://github.com/hmcts/et-ccd-definitions-scotland) |
-| ADMIN_CCD_CONFIG_PATH        | Path to local repository for [ECM Admin CCD config](https://github.com/hmcts/et-ccd-definitions-admin) |
+| SCOTLAND_CCD_CONFIG_PATH     | Path to local repository for [Scotland CCD config](https://github.com/hmcts/et-ccd-definitions-scotland)         |
+| ADMIN_CCD_CONFIG_PATH        | Path to local repository for [ECM Admin CCD config](https://github.com/hmcts/et-ccd-definitions-admin)           |
 
 The following commands will setup a CCD docker environment for developing ECM in Reform ET.
 
@@ -105,7 +105,9 @@ http://localhost:3455/
 All logins use a password of Pa55word11
 
 ---
-Note that after a docker restart you only have to execute these steps to start CCD Docker again:
+Note that after a docker restart you only have to execute these steps to start CCD Docker again.
+
+You also need to run init-ecm.sh again because the IdAM Simulator does not persist logins.
 ```bash
 exec bash
 source ./bin/set-environment-variables.sh
@@ -120,6 +122,8 @@ source ./bin/set-environment-variables.sh
 ./ccd login
 ./ccd compose pull
 ./ccd compose up -d
+# once the system is up then run
+./bin/ecm/init-ecm.sh
 ```
 
 ## Importing CCD Config
