@@ -6,7 +6,7 @@
   },
   {
     "email": "ecm.dev@hmcts.net",
-    "roles": "caseworker,caseworker-employment,caseworker-employment-bristol,caseworker-employment-leeds,caseworker-employment-londoneast,caseworker-employment-londonwest,caseworker-employment-manchester,caseworker-employment-midlandseast,caseworker-employment-midlandswest,caseworker-employment-newcastle,caseworker-employment-scotland,caseworker-employment-wales,caseworker-employment-watford,caseworker-employment-api",
+    "roles": "caseworker,caseworker-employment,caseworker-employment-bristol,caseworker-employment-leeds,caseworker-employment-londoneast,caseworker-employment-londonwest,caseworker-employment-manchester,caseworker-employment-midlandseast,caseworker-employment-midlandswest,caseworker-employment-newcastle,caseworker-employment-scotland,caseworker-employment-wales,caseworker-employment-watford,caseworker-employment-api,caseworker-employment-etjudge-bristol,caseworker-employment-etjudge-leeds,caseworker-employment-etjudge-londoneast,caseworker-employment-etjudge-londonwest,caseworker-employment-etjudge-manchester,caseworker-employment-etjudge-midlandseast,caseworker-employment-etjudge-midlandswest,caseworker-employment-etjudge-newcastle,caseworker-employment-etjudge-scotland,caseworker-employment-etjudge-wales,caseworker-employment-etjudge-watford",
     "lastName": "Dev",
     "firstName": "ECM"
   },
