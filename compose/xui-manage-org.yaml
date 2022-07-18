@@ -1,0 +1,53 @@
+services:
+  xui-manage-org:
+    image: hmctspublic.azurecr.io/xui/mo-webapp:latest
+    container_name: xui-manage-org
+    environment:
+      IDAM_API_SERVICE: "${IDAM_STUB_SERVICE_NAME:-http://idam-api:5000}"
+      SERVICES_CCD_DATA_STORE_API: http://ccd-data-store-api:4452
+      IDAM_SECRET: xui_webapp_secrect
+      S2S_SECRET: "${BEFTA_S2S_CLIENT_SECRET_OF_XUI_WEBAPP}"
+      LAUNCH_DARKLY_CLIENT_ID: "${XUI_LAUNCH_DARKLY_CLIENT_ID}"
+      APPINSIGHTS_INSTRUMENTATIONKEY: "AAAAAAAAAAAAAAAC"
+      REDISCLOUD_URL: http://localhost:6780
+      MICROSERVICE: xui_webapp
+
+      IDAM_WEB_SERVICE: http://localhost:3501
+      RD_PROFESSIONAL_API_SERVICE: http://wiremock:8080
+      S2S_SERVICE: http://service-auth-provider-api:8080
+      FEE_AND_PAY_API: http://fees-api:8080
+      ACA_SERVICE_API_BASEURL: http://manage-case-assignment:4454
+      SERVICES_MCA_PROXY_API: http://manage-case-assignment:4454
+      SERVICES_IDAM_ISS_URL: http://fr-am:8080/openam/oauth2/realms/root/realms/hmcts
+      APPINSIGHTS_INSTRUMENTATIONKEY_MO: "AAAAAAAAAAAAAAAC"
+      MO_S2S_CLIENT_SECRET: "AAAAAAAAAAAAAAAA"
+      GOOGLE_ANALYTICS_KEY: "AAAAAAAAAAAAAAAC"
+      NODE_CONFIG_ENV: local
+      IDAM_CLIENT: xui_mo_webapp
+      OAUTH_CALLBACK_URL: /oauth2/callback
+      LOGIN_ROLE_MATCHER:
+      PROTOCOL: "http"
+      SERVICES_TERMS_AND_CONDITIONS_API_SERVICE:
+      MANAGE_CASE_LINK:
+      MANAGE_ORG_LINK:
+      SESSION_SECRET:
+      CASE_TYPES: "Caveat,GrantOfRepresentation,ET_EnglandWales, ET_Scotland"
+      FEATURE_APP_INSIGHTS_ENABLED: "false"
+      FEATURE_PROXY_ENABLED: "false"
+      FEATURE_SECURE_COOKIE_ENABLED: "false"
+      FEATURE_TERMS_AND_CONDITIONS_ENABLED: "false"
+      FEATURE_HELMET_ENABLED: "false"
+      FEATURE_REDIS_ENABLED: "false"
+      FEATURE_OIDC_ENABLED: "false"
+      LOGGING: debug
+      PORT: 3001
+    links:
+      - manage-case-assignment
+    ports:
+      - 4456:4456
+      - 3001:3001
+
+
+networks:
+  ccd-network:
+    external: true
