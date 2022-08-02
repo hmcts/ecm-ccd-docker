@@ -32,6 +32,6 @@
   { "role": "caseworker-employment-etjudge-englandwales", "security_classification": "PUBLIC" },
   { "role": "caseworker-employment-etjudge-scotland", "security_classification": "PUBLIC" },
   { "role": "citizen", "security_classification": "PUBLIC" },
-  { "role": "caseworker-ET-pcqextractor", "security_classification": "PUBLIC" },
+  { "role": "caseworker-et-pcqextractor", "security_classification": "PUBLIC" },
   { "role": "caseworker-employment-legalrep-solicitor", "security_classification": "PUBLIC" }
 ]
