@@ -24,7 +24,7 @@
   },
   {
     "email": "et.dev@hmcts.net",
-    "roles": "caseworker,caseworker-employment,caseworker-employment-englandwales,caseworker-employment-scotland,caseworker-employment-api",
+    "roles": "caseworker,caseworker-employment,caseworker-employment-englandwales,caseworker-employment-scotland,caseworker-employment-api,citizen",
     "lastName": "Dev",
     "firstName": "ET"
   },
@@ -37,6 +37,12 @@
   {
     "email": "et.service@hmcts.net",
     "roles": "caseworker,caseworker-employment,caseworker-employment-api",
+    "lastName": "Service Account",
+    "firstName": "ET"
+  },
+  { 
+    "email": "data.store.idam.system.user@gmail.com",	
+    "roles": "ccd-import,manage-user",
     "lastName": "Service Account",
     "firstName": "ET"
   }
