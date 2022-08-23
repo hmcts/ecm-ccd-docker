@@ -7,7 +7,7 @@ for use in ECM and RET ECM development.
 * ExUI is used for case access
 * [RSE IdAM Simulator](https://github.com/hmcts/rse-idam-simulator) is used rather than the full IdAM implementation
 * Elasticsearch enabled for case search
-* Docmosis Tornado can be enabled for document and report generation
+* Docmosis Tornado can be enabled for document and report generation. By default, a mock is used instead.
 
 This documentation consists only of quickstart instructions. For a full explanation of the CCD environment see
 the main ccd-docker repository.
@@ -143,15 +143,24 @@ a = ECM Admin
 The import script will use the local version of the XLSX CCD config spreadsheet.
 
 ## Docmosis Reports
+By default, a mock is used for the Docmosis Tornado server.
+It does not generate any reports but instead just provides a basic response to GET and POST requests to `/api/render`
+
 To enable reports to be generated you will need to have the following environment variables set (see .env file):
 * TORNADO_LICENSE_KEY
 * TORNADO_TEMPLATES_DIRECTORY
 
-Then add
+See [here](https://tools.hmcts.net/confluence/display/DATS/Develop+docmosis+templates+locally) for more details on setup.
+
+Then in [defaults.conf](https://github.com/hmcts/ecm-ccd-docker/blob/master/compose/defaults.conf) replace
+```
+tornado-mock
+```
+with
 ```
 tornado
 ```
-to defaults.conf and execute
+Finally, execute
 ```
 ./ccd compose up -d
 ```

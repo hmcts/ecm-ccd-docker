@@ -1,0 +1,11 @@
+services:
+  tornado:
+    image: rodolpheche/wiremock
+    volumes:
+      - ./mocks/mappings/tornado:/home/wiremock/mappings/tornado:rw
+    ports:
+      - 9095:8080
+
+networks:
+  ccd-network:
+    external: true

@@ -1,0 +1,10 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPath": "/api/render"
+  },
+  "response": {
+    "status": 200,
+    "body": "{\"status\": \"UP\"}"
+  }
+}
