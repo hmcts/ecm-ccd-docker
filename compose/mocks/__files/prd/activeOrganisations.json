@@ -1,0 +1,83 @@
+[
+  {
+    "name": "ET - Organisation 1",
+    "organisationIdentifier": "79ZRSOU",
+    "contactInformation": [
+      {
+        "addressLine1": "1 Main Street",
+        "addressLine2": null,
+        "addressLine3": null,
+        "townCity": "London",
+        "county": null,
+        "country": null,
+        "postCode": "ET1 ET1",
+        "dxAddress": [
+        ]
+      }
+    ],
+    "status": "ACTIVE",
+    "sraRegulated": false,
+    "superUser": {
+      "firstName": "Superuser",
+      "lastName": "Organisation1",
+      "email": "superuser@etorganisation1.com"
+    },
+    "paymentAccount": [
+      "PBA1234999"
+    ]
+  },
+  {
+    "name": "ET - Organisation 2",
+    "organisationIdentifier": "Q1KOKP2",
+    "contactInformation": [
+      {
+        "addressLine1": "1 Main Street",
+        "addressLine2": null,
+        "addressLine3": null,
+        "townCity": "Glasgow",
+        "county": null,
+        "country": null,
+        "postCode": "ET2 ET2",
+        "dxAddress": []
+      }
+    ],
+    "status": "ACTIVE",
+    "sraRegulated": false,
+    "superUser": {
+      "firstName": "Superuser",
+      "lastName": "Organisation2",
+      "email": "superuser@etorganisation2.com"
+    },
+    "paymentAccount": [
+      "PBA0088192",
+      "PBA0078095"
+    ]
+  },
+  {
+    "name": "ET - Organisation 3",
+    "organisationIdentifier": "H2156A0",
+    "contactInformation": [
+      {
+        "addressLine1": "1 Main Street",
+        "addressLine2": null,
+        "addressLine3": null,
+        "townCity": "Cardiff",
+        "county": null,
+        "country": null,
+        "postCode": "ET3 ET3",
+        "dxAddress": []
+      }
+    ],
+    "status": "ACTIVE",
+    "sraRegulated": false,
+    "superUser": {
+      "firstName": "Superuser",
+      "lastName": "Organisation3",
+      "email": "superuser@etorganisation3.com"
+    },
+    "paymentAccount": [
+      "PBA0078094",
+      "PBA0077597"
+    ]
+  }
+]

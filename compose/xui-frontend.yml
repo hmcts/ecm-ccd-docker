@@ -24,6 +24,7 @@ services:
       SERVICES_IDAM_LOGIN_URL: "${IDAM_STUB_LOCALHOST:-http://localhost:3501}"
       SERVICES_IDAM_INDEX_URL: /
       SERVICES_IDAM_OAUTH_CALLBACK_URL: /oauth2/callback
+      SERVICES_PRD_API: http://host.docker.internal:4507
       SERVICES_S2S: http://service-auth-provider-api:8080
       SERVICES_ROLE_ASSIGNMENT_API: "${ROLE_ASSIGNMENT_URL:-http://am-role-assignment-service:4096}"
       REDISCLOUD_URL: http://localhost:6780

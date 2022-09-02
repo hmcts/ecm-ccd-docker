@@ -1,0 +1,19 @@
+{
+  "organisationIdentifier": "79ZRSOU",
+  "users": [
+    {
+      "userIdentifier": "92e750d0-8a45-4975-9f1a-9cfc56247d37",
+      "firstName": "Solicitor1",
+      "lastName": "Organisation1",
+      "email": "solicitor1@etorganisation1.com",
+      "idamStatus": "Active"
+    },
+    {
+      "userIdentifier": "52a23cfe-0383-4dae-826d-d45efdcfdc11",
+      "firstName": "Superuser",
+      "lastName": "Organisation1",
+      "email": "superuser@etorganisation1.com",
+      "idamStatus": "Active"
+    }
+  ]
+}

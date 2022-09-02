@@ -1,0 +1,27 @@
+{
+  "name": "ET - Organisation 3",
+  "organisationIdentifier": "H2156A0",
+  "contactInformation": [
+    {
+      "addressLine1": "1 Main Street",
+      "addressLine2": null,
+      "addressLine3": null,
+      "townCity": "Cardiff",
+      "county": null,
+      "country": null,
+      "postCode": "ET3 ET3",
+      "dxAddress": []
+    }
+  ],
+  "status": "ACTIVE",
+  "sraRegulated": false,
+  "superUser": {
+    "firstName": "Superuser",
+    "lastName": "Organisation3",
+    "email": "superuser@etorganisation3.com"
+  },
+  "paymentAccount": [
+    "PBA0078094",
+    "PBA0077597"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "ET - Organisation 2",
+  "organisationIdentifier": "Q1KOKP2",
+  "contactInformation": [
+    {
+      "addressLine1": "1 Main Street",
+      "addressLine2": null,
+      "addressLine3": null,
+      "townCity": "Glasgow",
+      "county": null,
+      "country": null,
+      "postCode": "ET2 ET2",
+      "dxAddress": []
+    }
+  ],
+  "status": "ACTIVE",
+  "sraRegulated": false,
+  "superUser": {
+    "firstName": "Superuser",
+    "lastName": "Organisation2",
+    "email": "superuser@etorganisation2.com"
+  },
+  "paymentAccount": [
+    "PBA0088192",
+    "PBA0078095"
+  ]
+}

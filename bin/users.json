@@ -40,10 +40,16 @@
     "lastName": "Service Account",
     "firstName": "ET"
   },
-  { 
-    "email": "data.store.idam.system.user@gmail.com",	
+  {
+    "email": "data.store.idam.system.user@gmail.com",
     "roles": "ccd-import,manage-user",
     "lastName": "Service Account",
     "firstName": "ET"
+  },
+  {
+    "email": "superuser@etorganisation1.com",
+    "roles": "cca-caseworker,pui-case-manager,pui-organisation-manager,pui-user-manager",
+    "lastName": "Organisation1",
+    "firstName": "Superuser"
   }
 ]

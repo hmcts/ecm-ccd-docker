@@ -1,0 +1,61 @@
+---
+version: '2.4'
+
+services:
+  xui-manage-org:
+    image: hmctspublic.azurecr.io/xui/mo-webapp:latest
+    environment:
+      DEBUG: '*:*'
+      IDAM_API_SERVICE: "${IDAM_STUB_SERVICE_NAME:-http://idam-api:5000}"
+      IDAM_WEB_SERVICE: "${IDAM_STUB_LOCALHOST:-http://localhost:3501}"
+      RD_PROFESSIONAL_API_SERVICE: http://host.docker.internal:4507
+      S2S_SERVICE: http://service-auth-provider-api:8080
+      #FEE_AND_PAY_API: http://payment-api-aat.service.core-compute-aat.internal
+      SERVICES_CCD_DATA_STORE_API: http://ccd-data-store-api:4452
+      #ACA_SERVICE_API_BASEURL: http://${JVM_HOST:-host.docker.internal}:4454
+      #SERVICES_MCA_PROXY_API: http://${JVM_HOST:-host.docker.internal}:4454
+      APPINSIGHTS_INSTRUMENTATIONKEY: AAAAAAAAAAAAAAAC
+      IDAM_SECRET: AAAAAAAAAAAAAAA
+      S2S_SECRET: "${BEFTA_S2S_CLIENT_SECRET_OF_XUI_WEBAPP}"
+      LAUNCH_DARKLY_CLIENT_ID: "${XUI_LAUNCH_DARKLY_CLIENT_ID}"
+      APPINSIGHTS_INSTRUMENTATIONKEY_MO: "AAAAAAAAAAAAAAAC"
+      GOOGLE_ANALYTICS_KEY: "AAAAAAAAAAAAAAAC"
+      REDISCLOUD_URL: "AAAAAAAAAAAAAAAC"
+      NODE_CONFIG_ENV: local
+      IDAM_CLIENT: xuimowebapp
+      MICROSERVICE: xui_webapp
+      OAUTH_CALLBACK_URL: /oauth2/callback
+      LOGIN_ROLE_MATCHER:
+      PROTOCOL: "http"
+      SERVICES_TERMS_AND_CONDITIONS_API_SERVICE:
+      MANAGE_CASE_LINK:
+      MANAGE_ORG_LINK:
+      SESSION_SECRET:
+      CASE_TYPES: "ET_EnglandWales,ET_Scotland"
+      FEATURE_APP_INSIGHTS_ENABLED: "false"
+      FEATURE_PROXY_ENABLED: "false"
+      FEATURE_SECURE_COOKIE_ENABLED: "false"
+      FEATURE_TERMS_AND_CONDITIONS_ENABLED: "false"
+      FEATURE_HELMET_ENABLED: "false"
+      FEATURE_REDIS_ENABLED: "false"
+      FEATURE_OIDC_ENABLED: "false"
+      LOGGING: debug
+      PORT: 3001
+    ports:
+      - ${XUI_MO_PORT:-3001}:3001
+    networks:
+      - ccd-network
+
+  rd-professional-reference-data:
+    image: rodolpheche/wiremock
+    volumes:
+      - ./mocks/mappings/prd:/home/wiremock/mappings/prd:rw
+      - ./mocks/__files/prd:/home/wiremock/__files/prd:rw
+    ports:
+      - "4507:8080"
+    networks:
+      - ccd-network
+
+networks:
+  ccd-network:
+    external: true
