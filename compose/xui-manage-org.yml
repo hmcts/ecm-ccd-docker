@@ -12,8 +12,8 @@ services:
       S2S_SERVICE: http://service-auth-provider-api:8080
       #FEE_AND_PAY_API: http://payment-api-aat.service.core-compute-aat.internal
       SERVICES_CCD_DATA_STORE_API: http://ccd-data-store-api:4452
-      #ACA_SERVICE_API_BASEURL: http://${JVM_HOST:-host.docker.internal}:4454
-      #SERVICES_MCA_PROXY_API: http://${JVM_HOST:-host.docker.internal}:4454
+      ACA_SERVICE_API_BASEURL: http://manage-case-assignment:4454
+      SERVICES_MCA_PROXY_API: http://manage-case-assignment:4454
       APPINSIGHTS_INSTRUMENTATIONKEY: AAAAAAAAAAAAAAAC
       IDAM_SECRET: AAAAAAAAAAAAAAA
       S2S_SECRET: "${BEFTA_S2S_CLIENT_SECRET_OF_XUI_WEBAPP}"
@@ -41,10 +41,50 @@ services:
       FEATURE_OIDC_ENABLED: "false"
       LOGGING: debug
       PORT: 3001
+    links:
+       - manage-case-assignment      
     ports:
       - ${XUI_MO_PORT:-3001}:3001
     networks:
       - ccd-network
+
+  manage-case-assignment:
+    image: "hmctspublic.azurecr.io/aac/manage-case-assignment:${MANAGE_CASE_ASSIGNMENT_TAG:-latest}"
+    container_name: manage-case-assignment
+    environment:
+      SERVER_PORT: 4454
+      IDAM_API_URL: "${IDAM_STUB_SERVICE_NAME:-http://idam-api:5000}"
+      IDAM_OIDC_URL: "${IDAM_STUB_SERVICE_NAME:-http://idam-api:5000}"
+      S2S_URL: http://service-auth-provider-api:8080
+      MANAGE_CASE_S2S_KEY: "AAAAAAAAAAAAAAAA"      
+      CCD_DATA_STORE_API_BASE_URL: http://ccd-data-store-api:4452
+      CCD_DEFINITION_STORE_API_BASE_URL: http://ccd-definition-store-api:4451
+      PRD_HOST: http://host.docker.internal:4507
+      NOTIFY_MCA_API_KEY: "notify-test-api-key"
+      MANAGE_CASE_S2S_AUTHORISED_SERVICES: xui_webapp,ccd_data,ccd_gw,xui_mo_webapp
+      ROOT_LOGGING_LEVEL: info                    
+      CCD_DATA_STORE_ALLOWED_SERVICE: xui_webapp      
+      MCA_DS_PROXY_URLS_ALLOWED_LIST: /searchCases.*,/internal/searchCases.*,/internal/cases.*
+      MCA_DEF_STORE_PROXY_URLS_ALLOWED_LIST: /api/display/challenge-questions.*
+      MCA_CONDITIONAL_APIS_CASE_ASSIGNMENTS_ENABLED: "true"      
+      ROLE_ASSIGNMENT_URL: "${ROLE_ASSIGNMENT_URL:-http://am-role-assignment-service:4096}"
+      IDAM_CAA_USERNAME: "mca.system.idam.acc@gmail.com"
+      IDAM_CAA_PASSWORD: "Pa55word11"
+      IDAM_NOC_APPROVER_USERNAME: "mca.noc.approver@gmail.com"
+      IDAM_NOC_APPROVER_PASSWORD: "Pa55word11"
+      IDAM_SYSTEM_USER_USERNAME: "mca.system.idam.acc@gmail.com"
+      IDAM_SYSTEM_USER_PASSWORD: "Pa55word11"
+      IDAM_CLIENT_SECRET: "${BEFTA_S2S_CLIENT_SECRET_OF_AAC_MANAGE_CASE_ASSIGNMENT}"              
+      IDAM_CLIENT_ID: aac_manage_case_assignment            
+      IDAM_URL: "${IDAM_STUB_SERVICE_NAME:-http://idam-api:5000}"
+      CCD_DEFINITION_STORE_ALLOWED_SERVICE: xui_webapp
+      #OIDC_ISSUER: ""
+    ports:
+      - 4454:4454
+    depends_on:
+      - rd-professional-reference-data
+    networks:
+      - ccd-network     
 
   rd-professional-reference-data:
     image: rodolpheche/wiremock
