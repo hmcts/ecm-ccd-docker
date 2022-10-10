@@ -3,8 +3,11 @@
     "method": "GET",
     "urlPath": "/refdata/external/v1/organisations/users",
     "queryParameters": {
-      "returnRoles": {
-        "equalTo": "false"
+      "size": {
+        "equalTo": "50"
+      },
+      "page": {
+        "equalTo": "0"
       }
     }
   },
@@ -13,6 +16,6 @@
     "headers": {
       "Content-Type": "application/json"
     },
-    "bodyFileName": "prd/users.json"
+    "bodyFileName": "prd/activeUsers.json"
   }
 }
