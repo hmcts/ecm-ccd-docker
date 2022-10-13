@@ -82,7 +82,6 @@ source ./bin/set-environment-variables.sh
 # curl: (52) Empty reply from server
 # then wait a minute and retry
 ```
-./bin/wiremock.sh
 
 To setup the ECM specific services see:
 * https://github.com/hmcts/et-ccd-callbacks
@@ -136,7 +135,6 @@ source ./bin/set-environment-variables.sh
 # once the system is up then run
 ./bin/ecm/init-ecm.sh
 ```
-./bin/wiremock.sh
 
 ## Importing CCD Config
 If environment variables have been set as described previously, then it is possible to import EnglandWales, Scotland or

@@ -7,6 +7,8 @@ ${dir}/../add-users.sh
 
 ${dir}/../add-ccd-roles.sh
 
+${dir}/../wiremock.sh
+
 if [[ ${ENGLANDWALES_CCD_CONFIG_PATH} ]]
 then
   ${dir}/import-ccd-config.sh e
