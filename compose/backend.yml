@@ -211,6 +211,27 @@ services:
       networks:
         - ccd-network
 
+  camunda-local-bpm:
+    image: "hmctsprivate.azurecr.io/camunda/bpm:latest"
+    environment:
+      CAMUNDA_NEXUS_USER: "ministry_of_justice_uk"
+      CAMUNDA_NEXUS_PASSWORD: "Bq?49xrwGENwLgC!"
+      CAMUNDA_DB_HOST: "${CCD_POSTGRES_11:-ccd-shared-database}"
+      CAMUNDA_DB_PORT: 5432
+      CAMUNDA_DB_USER_NAME: "ccd"
+      CAMUNDA_DB_PASSWORD: "ccd"
+      camunda.bpm.database.schema-update: "true"
+      CAMUNDA_API_AUTH_ENABLED: "false"
+      S2S_URL: http://service-auth-provider-api
+      camundaGroups.work-allocation.s2sServiceNames: wa_task_management_api,wa_workflow_api,wa_case_event_handler,wa_camunda_pipeline_upload
+      WA_AUTO_CONFIGURE_TASKS_ENABLED: "True"
+      TASK_MANAGEMENT_API_URL: "http://localhost:8087"
+      TZ: Europe/London
+    ports:
+      - 8999:8999
+    networks:
+      - ccd-network
+
 volumes:
   ccd-docker-ccd-shared-database-data-v11:
   #wiremock:
