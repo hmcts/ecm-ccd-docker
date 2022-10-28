@@ -3,6 +3,23 @@ version: '2.4'
 #only add core CCD services here. Side services should be added to others.yaml
 
 services:
+  ccd-shared-database-v11:
+    build: ../database-v11
+    healthcheck:
+      interval: 10s
+      timeout: 10s
+      retries: 10
+    environment:
+      DB_USERNAME:
+      DB_PASSWORD:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - 5050:5432
+    volumes:
+      - ccd-docker-ccd-shared-database-data-v11:/var/lib/postgresql/data
+    networks:
+      - ccd-network
+
   ccd-user-profile-api:
     image: "${CCD_USER_PROFILE_API_USE_LOCAL-hmctspublic.azurecr.io/}ccd/user-profile-api:${CCD_USER_PROFILE_API_TAG:-latest}"
     environment:
@@ -75,7 +92,8 @@ services:
       DATA_STORE_TOKEN_SECRET: iuasbcuasdcbasdgcasdgcuysachjsacyasdgjcgasdj
       DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_gw,ccd_gateway,fpl_case_service,ccd_data,ccd_ps,aac_manage_case_assignment,
         xui_webapp,ccd_case_document_am_api,am_role_assignment_service,
-        ethos_repl_docmosis_service,ecm_consumer,et_cos,et_msg_handler,et_sya_api
+        ethos_repl_docmosis_service,ecm_consumer,et_cos,et_msg_handler,et_sya_api,wa_workflow_api,
+        wa_task_management_api,wa_task_monitor,wa_case_event_handler
       DEFINITION_STORE_HOST: http://ccd-definition-store-api:4451
       USER_PROFILE_HOST: http://ccd-user-profile-api:4453
       IDAM_USER_URL: "${IDAM_STUB_SERVICE_NAME:-http://idam-api:5000}" # For backward compatibility with older images
@@ -190,26 +208,15 @@ services:
       MICROSERVICEKEYS_ET_COS: "${IDAM_KEY_ET_COS}"
       MICROSERVICEKEYS_ET_SYA_API: "${IDAM_KEY_ET_SYA_API}"
       MICROSERVICEKEYS_ET_MSG_HANDLER: "${IDAM_KEY_ET_MSG_HANDLER}"
+      MICROSERVICEKEYS_WA_WORKFLOW_API: "AAAAAAAAAAAAAAAA"
+      MICROSERVICEKEYS_WA_TASK_MANAGEMENT_API: "AAAAAAAAAAAAAAAA"
+      MICROSERVICEKEYS_WA_TASK_CONFIGURATION_API: "AAAAAAAAAAAAAAAA"
+      MICROSERVICEKEYS_WA_CASE_EVENT_HANDLER: "AAAAAAAAAAAAAAAA"
+      MICROSERVICEKEYS_WA_TASK_MONITOR: "AAAAAAAAAAAAAAAA"
+      MICROSERVICEKEYS_CAMUNDA_BPM: "AAAAAAAAAAAAAAAA"
       TESTING_SUPPORT_ENABLED: "true"
     networks:
       - ccd-network
-
-  ccd-shared-database-v11:
-      build: ../database-v11
-      healthcheck:
-        interval: 10s
-        timeout: 10s
-        retries: 10
-      environment:
-        DB_USERNAME:
-        DB_PASSWORD:
-        POSTGRES_HOST_AUTH_METHOD: trust
-      ports:
-        - 5050:5432
-      volumes:
-        - ccd-docker-ccd-shared-database-data-v11:/var/lib/postgresql/data
-      networks:
-        - ccd-network
 
   camunda-local-bpm:
     image: "hmctsprivate.azurecr.io/camunda/bpm:latest"
@@ -229,6 +236,154 @@ services:
       TZ: Europe/London
     ports:
       - 8999:8999
+    depends_on:
+      ccd-shared-database-v11:
+        condition: service_started
+    networks:
+      - ccd-network
+
+  ccd-message-publisher:
+    image: "hmctspublic.azurecr.io/ccd/message-publisher:latest"
+    container_name: message-publisher
+    environment:
+      DATA_STORE_DB_HOST: "${CCD_POSTGRES_11:-ccd-shared-database}"
+      DATA_STORE_DB_PORT: 5432
+      DATA_STORE_DB_USERNAME: "${DB_USERNAME}"
+      DATA_STORE_DB_PASSWORD: "${DB_PASSWORD}"
+      SERVICE_BUS_CONNECTION_STRING: "${AZURE_SERVICE_BUS_CONNECTION_STRING}"
+      CCD_CASE_EVENTS_DESTINATION: "${AZURE_SERVICE_BUS_TOPIC_NAME}"
+    ports:
+      - 4456:4456
+    networks:
+      - ccd-network
+
+  wa-workflow-api:
+    image: "hmctspublic.azurecr.io/wa/workflow-api:latest"
+    container_name: workflow-api
+    environment:
+      CAMUNDA_URL: http://camunda-bpm:8999/engine-rest
+      S2S_URL: http://service-auth-provider-api:8080
+      S2S_SECRET_WORKFLOW_API: "AAAAAAAAAAAAAAAA"
+      POSTGRES_HOST: "${CCD_POSTGRES_11:-ccd-shared-database}"
+      POSTGRES_PORT: 5432
+      POSTGRES_NAME: wa_workflow_api
+      POSTGRES_USERNAME: "${DB_USERNAME:-postgres}"
+      POSTGRES_PASSWORD: "${DB_PASSWORD:-postgres}"
+      WA_S2S_AUTHORIZED_SERVICES: wa_workflow_api,wa_case_event_handler,camunda-bpm,xui_webapp
+      LAUNCH_DARKLY_SDK_KEY: "${LAUNCH_DARKLY_SDK_KEY}"
+    ports:
+      - 8099:8099
+    depends_on:
+      - ccd-shared-database-v11
+      - service-auth-provider-api
+      - camunda-local-bpm
+    links:
+      - ccd-shared-database-v11
+      - service-auth-provider-api
+      - camunda-local-bpm
+    networks:
+      - ccd-network
+
+  wa-task-management-api:
+    image: "hmctspublic.azurecr.io/wa/task-management-api:latest"
+    container_name: wa-task-management-api
+    environment:
+      CAMUNDA_URL: http://camunda-bpm:8999/engine-rest
+      S2S_URL: http://service-auth-provider-api:8080
+      IDAM_URL: http://rse-idam-simulator:5000
+      CCD_URL: http://ccd-data-store-api:4452
+      POSTGRES_HOST: ccd-shared-database-v11
+      OPEN_ID_IDAM_URL: http://rse-idam-simulator:5000
+      ROLE_ASSIGNMENT_URL: http://am-role-assignment-service:4096
+      POSTGRES_PORT: 5432
+      POSTGRES_NAME: cft_task_db
+      ALLOWED_JURISDICTIONS: wa,ia,sscs,civil
+      ALLOWED_CASE_TYPES: asylum,wacasetype,sscs,civil
+      WA_S2S_AUTHORIZED_SERVICES: ccd,ccd_data,ccd_gw,ccd_ps,iac,wa_task_management_api,xui_webapp,wa_task_monitor,camunda_bpm,wa_workflow_api
+      LAUNCH_DARKLY_SDK_KEY: "${LAUNCH_DARKLY_SDK_KEY}"
+      WA_SYSTEM_USERNAME: "${WA_SYSTEM_USERNAME}"
+      WA_SYSTEM_PASSWORD: "${WA_SYSTEM_PASSWORD}"
+    ports:
+      - 8087:8087
+    depends_on:
+      - ccd-shared-database-v11
+      - service-auth-provider-api
+      - camunda-local-bpm
+    networks:
+      - ccd-network
+
+  case-event-handler:
+    image: "hmctspublic.azurecr.io/wa/case-event-handler:latest"
+    container_name: case-event-handler
+    environment:
+      POSTGRES_HOST: ccd-shared-database-v11
+      AZURE_SERVICE_BUS_CONNECTION_STRING: "${AZURE_SERVICE_BUS_CONNECTION_STRING}"
+      AZURE_SERVICE_BUS_TOPIC_NAME: "${AZURE_SERVICE_BUS_TOPIC_NAME}"
+      AZURE_SERVICE_BUS_SUBSCRIPTION_NAME: "${AZURE_SERVICE_BUS_SUBSCRIPTION_NAME}"
+      AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME: "${AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME}"
+      POSTGRES_CONNECTION_OPTIONS: "?stringtype=unspecified&gssEncMode=disable"
+      APPLICATIONINSIGHTS_CONNECTION_STRING: "InstrumentationKey=00000000-0000-0000-0000-000000000000"
+      ENVIRONMENT: "local"
+      S2S_URL: http://service-auth-provider-api:8080
+      WA_WORKFLOW_API_URL: http://wa-workflow-api:8099
+      OPEN_ID_IDAM_URL: http://rse-idam-simulator:5000
+      IDAM_URL: http://rse-idam-simulator:5000
+      ROLE_ASSIGNMENT_URL: http://am-role-assignment-service:4096
+      CAMUNDA_URL: http://camunda-bpm:8999/engine-rest
+      CCD_URL: http://ccd-data-store-api:4452
+      AZURE_SERVICE_BUS_FEATURE_TOGGLE: "true"
+      AZURE_SERVICE_BUS_DLQ_FEATURE_TOGGLE: "true"
+      AZURE_SERVICE_BUS_CONCURRENT_SESSIONS: 2
+      MESSAGE_PROCESSING_POLL_INTERVAL_MILLISECONDS: 2000
+      MESSAGE_PROCESSING_THREAD_POOL_SIZE: 5
+      MESSAGE_READINESS_POLL_INTERVAL_MILLISECONDS: 500
+      MESSAGE_READINESS_THREAD_POOL_SIZE: 2
+      LAUNCH_DARKLY_SDK_KEY: "${LAUNCH_DARKLY_SDK_KEY}"
+    ports:
+      - 8088:8088
+    depends_on:
+      - ccd-shared-database-v11
+      - service-auth-provider-api
+      - camunda-local-bpm
+      - am-role-assignment-service
+      - wa-workflow-api
+    networks:
+      - ccd-network
+
+  wa-task-monitor:
+    image: "hmctspublic.azurecr.io/wa/task-monitor:latest"
+    container_name: wa-task-monitor
+    environment:
+      S2S_URL: http://service-auth-provider-api:8080
+      WA_WORKFLOW_API_URL: http://wa-workflow-api:8099
+      OPEN_ID_IDAM_URL: http://rse-idam-simulator:5000
+      IDAM_URL: http://rse-idam-simulator:5000
+      ROLE_ASSIGNMENT_URL: http://am-role-assignment-service:4096
+      CAMUNDA_URL: http://camunda-bpm:8999/engine-rest
+      CCD_URL: http://ccd-data-store-api:4452
+      TASK_MANAGEMENT_SERVICE_URL: http://wa-task-management-api:8087
+      CASE_EVENT_HANDLER_SERVICE_URL: http://wa-case-event-handler:8088
+      CCD_SEARCH_URL: http://ccd-elasticsearch:9200
+      CONFIGURATION_CAMUNDA_MAX_RESULTS: 100
+      CONFIGURATION_TIME_LIMIT_FLAG: "true"
+      CONFIGURATION_TIME_LIMIT: 1440
+      INITIATION_CAMUNDA_MAX_RESULTS: 100
+      INITIATION_TIME_LIMIT_FLAG: "true"
+      INITIATION_TIME_LIMIT: 120
+      TERMINATION_CAMUNDA_MAX_RESULTS: 100
+      TERMINATION_TIME_LIMIT_FLAG: "true"
+      TERMINATION_TIME_LIMIT: 120
+      PENDING_TERMINATION_CAMUNDA_MAX_RESULTS: 1
+      WA_SYSTEM_USERNAME: "${WA_SYSTEM_USERNAME}"
+      WA_SYSTEM_PASSWORD: "${WA_SYSTEM_PASSWORD}"
+    ports:
+      - 8077:8077
+    depends_on:
+      - service-auth-provider-api
+      - case-event-handler
+      - wa-task-management-api
+      - ccd-elasticsearch
+      - am-role-assignment-service
     networks:
       - ccd-network
 
