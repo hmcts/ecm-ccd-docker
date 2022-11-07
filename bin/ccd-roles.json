@@ -44,5 +44,6 @@
   { "role": "pui-caa", "security_classification": "PUBLIC" },
   { "role": "prd-aac-system", "security_classification": "PUBLIC" },
   { "role": "prd-admin", "security_classification": "PUBLIC" },
-  { "role": "caseworker-approver", "security_classification": "PUBLIC" }
+  { "role": "caseworker-approver", "security_classification": "PUBLIC" },
+  { "role": "caseworker-divorce-solicitor", "security_classification": "PUBLIC" }  
 ]

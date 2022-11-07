@@ -72,8 +72,6 @@ services:
       IDAM_CAA_PASSWORD: "Pa55word11"
       IDAM_NOC_APPROVER_USERNAME: "mca.noc.approver@gmail.com"
       IDAM_NOC_APPROVER_PASSWORD: "Pa55word11"
-      IDAM_SYSTEM_USER_USERNAME: "mca.system.idam.acc@gmail.com"
-      IDAM_SYSTEM_USER_PASSWORD: "Pa55word11"
       IDAM_CLIENT_SECRET: "${BEFTA_S2S_CLIENT_SECRET_OF_AAC_MANAGE_CASE_ASSIGNMENT}"              
       IDAM_CLIENT_ID: aac_manage_case_assignment            
       IDAM_URL: "${IDAM_STUB_SERVICE_NAME:-http://idam-api:5000}"

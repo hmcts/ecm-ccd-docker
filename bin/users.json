@@ -54,7 +54,7 @@
   },
   {
     "email": "solicitor1@etorganisation1.com",
-    "roles": "caseworker,caseworker-employment,caseworker-employment-legalrep-solicitor,pui-case-manager",
+    "roles": "caseworker,caseworker-employment,caseworker-employment-legalrep-solicitor,pui-case-manager,pui-caa,caseworker-caa,pui-organisation-manager,caseworker-divorce-solicitor",
     "lastName": "Organisation1",
     "firstName": "Solicitor1"
   },
@@ -84,7 +84,7 @@
   },
   {
     "email": "mca.system.idam.acc@gmail.com",
-    "roles": "caseworker,caseworker-employment,caseworker-employment-englandwales,caseworker-employment-scotland,caseworker-employment-api,caseworker-caa",
+    "roles": "caseworker,caseworker-caa",
     "lastName": "Service Account",
     "firstName": "ET"
   },
@@ -93,5 +93,5 @@
     "roles": "caseworker,caseworker-approver,prd-aac-system,prd-admin",
     "lastName": "Service Account",
     "firstName": "ET"
-  }  
+  }
 ]
