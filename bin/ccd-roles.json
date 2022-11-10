@@ -35,5 +35,7 @@
   { "role": "caseworker-et-pcqextractor", "security_classification": "PUBLIC" },
   { "role": "caseworker-employment-legalrep-solicitor", "security_classification": "PUBLIC" },
   { "role": "manage-user", "security_classification": "PUBLIC" },
-  { "role": "et-acas-api", "security_classification": "PUBLIC" }
+  { "role": "et-acas-api", "security_classification": "PUBLIC" },
+  { "role": "caseworker-wa-task-configuration", "security_classification": "PUBLIC" },
+  { "role": "caseworker-wa-task-officer", "security_classification": "PUBLIC" }
 ]

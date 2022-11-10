@@ -24,7 +24,7 @@
   },
   {
     "email": "et.dev@hmcts.net",
-    "roles": "caseworker,caseworker-employment,caseworker-employment-englandwales,caseworker-employment-scotland,caseworker-employment-api,citizen",
+    "roles": "caseworker,caseworker-employment,caseworker-employment-englandwales,caseworker-employment-scotland,caseworker-employment-api,citizen,caseworker-wa,caseworker-wa-task-configuration",
     "lastName": "Dev",
     "firstName": "ET"
   },
