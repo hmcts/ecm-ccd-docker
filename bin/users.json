@@ -42,7 +42,7 @@
   },
   {
     "email": "data.store.idam.system.user@gmail.com",
-    "roles": "ccd-import,manage-user",
+    "roles": "ccd-import,manage-user,caseworker",
     "lastName": "Service Account",
     "firstName": "ET"
   },
