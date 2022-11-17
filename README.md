@@ -50,6 +50,7 @@ source ./bin/set-environment-variables.sh
 # if the response is
 # curl: (52) Empty reply from server
 # then wait a minute and retry
+./bin/wiremock.sh
 ./bin/ccd-import-definition.sh <path-to-ccd-files>/ccd-definitions.xlsx
 cd <path-to-ethos-repl-docmosis-service>/src/main/resources/sqlscripts
 ./setup-ethos-db.sh
@@ -93,14 +94,23 @@ http://localhost:3455/
 
 ### Logins
 
-| System | Login                    | Purpose                                      |
-|:-------|:-------------------------|:---------------------------------------------|
-| RET    | et.dev@hmcts.net         | Login with all roles                         |
-| RET    | et.caseworker@hmcts.net  | Login with only roles valid for a caseworker |
-| RET    | et.service@hmcts.net     | Service account login for et-msg-handler     |
-| ECM    | ecm.dev@hmcts.net        | Login with all roles                         |
-| ECM    | ecm.caseworker@hmcts.net | Login with only roles valid for a caseworker |
-| ECM    | ecm.service@hmcts.net    | Service account login for ecm-consumer       |
+| System | Login                           | Purpose                                      |
+|:-------|:--------------------------------|:---------------------------------------------|
+| RET    | et.dev@hmcts.net                | Login with all roles                         |
+| RET    | et.caseworker@hmcts.net         | Login with only roles valid for a caseworker |
+| RET    | et.service@hmcts.net            | Service account login for et-msg-handler     |
+| ECM    | ecm.dev@hmcts.net               | Login with all roles                         |
+| ECM    | ecm.caseworker@hmcts.net        | Login with only roles valid for a caseworker |
+| ECM    | ecm.service@hmcts.net           | Service account login for ecm-consumer       |
+| ECM    | mca.system.idam.acc@gmail.com   | Service account case access admin            |
+| ECM    | mca.noc.approver@gmail.com      | Service account notice of change approver    |
+| ECM    | superuser@etorganisation1.com   | Solictor organisation super user             |
+| ECM    | solicitor1@etorganisation1.com  | Solicitor user                               |
+| ECM    | solicitor2@etorganisation1.com  | Solicitor user                               |
+| ECM    | superuser@etorganisation2.com   | Solictor organisation super user             |
+| ECM    | solicitor1@etorganisation2.com  | Solicitor user                               |
+| ECM    | solicitor2@etorganisation2.com  | Solicitor user                               |
+
 
 All logins use a password of Pa55word11
 

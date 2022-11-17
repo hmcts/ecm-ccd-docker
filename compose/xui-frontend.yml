@@ -15,29 +15,32 @@ services:
       XUI_ENV: local
       SERVICES_DOCUMENTS_API: http://dm-store:8080
       SERVICES_DOCUMENTS_API_V2: http://ccd-case-document-am-api:4455
-      SERVICES_PAYMENTS_URL: http://wiremock:8080
+      SERVICES_PAYMENTS_URL: http://host.docker.internal:4507
       SERVICES_EM_ANNO_API: http://ccd-api-gateway:3453
       SERVICES_CCD_COMPONENT_API: http://ccd-api-gateway:3453
       SERVICES_CCD_DATA_STORE_API: http://ccd-data-store-api:4452
       SERVICES_IDAM_API_URL: "${IDAM_STUB_SERVICE_NAME:-http://idam-api:5000}"
       SERVICES_IDAM_CLIENT_ID: xui_webapp
-      SERVICES_IDAM_LOGIN_URL: "${IDAM_STUB_LOCALHOST:-http://localhost:3501}"
+      SERVICES_IDAM_LOGIN_URL: "${IDAM_STUB_LOCALHOST:-http://idam-api:5000}"
       SERVICES_IDAM_INDEX_URL: /
       SERVICES_IDAM_OAUTH_CALLBACK_URL: /oauth2/callback
+      SERVICES_PRD_API: http://host.docker.internal:4507
       SERVICES_S2S: http://service-auth-provider-api:8080
       SERVICES_ROLE_ASSIGNMENT_API: "${ROLE_ASSIGNMENT_URL:-http://am-role-assignment-service:4096}"
       REDISCLOUD_URL: http://localhost:6780
       SYSTEM_USER_NAME: "dummy"
-      SYSTEM_USER_PASSWORD: "dummy"
+      SYSTEM_USER_PASSWORD: "dummy"      
+      SERVICES_CCD_CASE_ASSIGNMENT_API: http://manage-case-assignment:4454      
 
       HEALTH_CCD_COMPONENT_API: http://ccd-api-gateway:3453/health
       HEALTH_CCD_DATA_API: http://ccd-data-store-api:4452/health
+      HEALTH_ROLE_ASSIGNMENT_API: http://am-role-assignment-service:4096/health
 
       APPINSIGHTS_INSTRUMENTATIONKEY: TESTVAR
       IDAM_SECRET: xui_webapp_secrect
-      S2S_SECRET: "${BEFTA_S2S_CLIENT_SECRET_OF_XUI_WEBAPP}"
+      S2S_SECRET: "${BEFTA_S2S_CLIENT_SECRET_OF_XUI_WEBAPP}"      
 
-      LAUNCH_DARKLY_CLIENT_ID: "${XUI_LAUNCH_DARKLY_CLIENT_ID}"
+      LAUNCH_DARKLY_CLIENT_ID: "${XUI_LAUNCH_DARKLY_CLIENT_ID}" 
 
     ports:
       - 3455:3000

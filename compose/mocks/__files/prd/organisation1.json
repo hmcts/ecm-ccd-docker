@@ -1,0 +1,27 @@
+{
+  "name": "ET - Organisation 1",
+  "organisationIdentifier": "79ZRSOU",
+  "contactInformation": [
+    {
+      "addressLine1": "1 Main Street",
+      "addressLine2": null,
+      "addressLine3": null,
+      "townCity": "London",
+      "county": null,
+      "country": null,
+      "postCode": "ET1 ET1",
+      "dxAddress": [
+      ]
+    }
+  ],
+  "status": "ACTIVE",
+  "sraRegulated": false,
+  "superUser": {
+    "firstName": "Superuser",
+    "lastName": "Organisation1",
+    "email": "superuser@etorganisation1.com"
+  },
+  "paymentAccount": [
+    "PBA1234999"
+  ]
+}
