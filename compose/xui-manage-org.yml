@@ -61,7 +61,7 @@ services:
       CCD_DEFINITION_STORE_API_BASE_URL: http://ccd-definition-store-api:4451
       PRD_HOST: http://host.docker.internal:4507
       NOTIFY_MCA_API_KEY: "notify-test-api-key"
-      MANAGE_CASE_S2S_AUTHORISED_SERVICES: xui_webapp,ccd_data,ccd_gw,xui_mo_webapp
+      MANAGE_CASE_S2S_AUTHORISED_SERVICES: xui_webapp,ccd_data,ccd_gw,xui_mo_webapp,et_cos
       ROOT_LOGGING_LEVEL: info                    
       CCD_DATA_STORE_ALLOWED_SERVICE: xui_webapp      
       MCA_DS_PROXY_URLS_ALLOWED_LIST: /searchCases.*,/internal/searchCases.*,/internal/cases.*
