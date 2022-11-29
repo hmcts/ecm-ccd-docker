@@ -44,7 +44,7 @@ services:
     links:
        - manage-case-assignment      
     ports:
-      - ${XUI_MO_PORT:-3001}:3001
+      - ${XUI_MO_PORT:-3456}:3001
     networks:
       - ccd-network
 
