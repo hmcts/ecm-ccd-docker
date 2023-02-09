@@ -138,8 +138,8 @@ IDAM_ADMIN_USER=idamOwner@hmcts.net
 IDAM_ADMIN_PASSWORD=Ref0rmIsFun
 ADDRESS_LOOKUP_TOKEN=Fbjw79fAGJxyo1SzwTDqHk2B85mJSdyn
 XUI_LAUNCH_DARKLY_CLIENT_ID=5de6610b23ce5408280f2268
-ENGLANDWALES_CCD_CONFIG_PATH=../backend/et-ccd-definitions-englandwales
-SCOTLAND_CCD_CONFIG_PATH=../backend/et-ccd-definitions-scotland
+ENGLANDWALES_CCD_CONFIG_PATH=enter_path_to_englandwales_config
+SCOTLAND_CCD_CONFIG_PATH=enter_path_to_scotland_config
 AZURE_SERVICE_BUS_CONNECTION_STRING=Endpoint=sb://ccd-servicebus-demo.servicebus.windows.net/;SharedAccessKeyName=SendAndListenSharedAccessKey;SharedAccessKey=B4PezUTfHcKpRPZdIpWd9BUHp47l28NEClBnuIN2S9w=
 AZURE_SERVICE_BUS_TOPIC_NAME=et-case-event-handler-topic-sessions-ft
 AZURE_SERVICE_BUS_SUBSCRIPTION_NAME=robin_local
