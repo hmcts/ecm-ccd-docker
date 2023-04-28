@@ -1,6 +1,8 @@
 [
   { "role": "caseworker", "security_classification": "PUBLIC" },
   { "role": "ccd-import", "security_classification": "PUBLIC" },
+  { "role": "caseworker-approver", "security_classification": "PUBLIC" },
+  { "role": "caseworker-caa", "security_classification": "PUBLIC" },
   { "role": "caseworker-employment", "security_classification": "PUBLIC" },
   { "role": "caseworker-employment-api", "security_classification": "PUBLIC" },
   { "role": "caseworker-employment-englandwales", "security_classification": "PUBLIC" },
