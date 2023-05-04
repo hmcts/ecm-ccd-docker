@@ -24,5 +24,24 @@
       }
     ], 
     "overrideAll": true 
+  },
+  {
+    "email": "et.dev@hmcts.net",
+    "roleAssignments": [
+      {
+        "roleType": "ORGANISATION",
+        "roleName": "judge",
+        "grantType": "STANDARD",
+        "roleCategory": "JUDICIAL",
+        "classification": "PUBLIC",
+        "readOnly": false,
+        "attributes": {
+          "caseType": "ET_EnglandWales",
+          "jurisdiction": "ET"
+        },
+        "authorisations": []
+      }
+    ],
+    "overrideAll": true
   }
 ]

@@ -297,14 +297,18 @@ services:
       ROLE_ASSIGNMENT_URL: http://am-role-assignment-service:4096
       POSTGRES_PORT: 5432
       POSTGRES_NAME: cft_task_db
-      ALLOWED_JURISDICTIONS: wa,ia,sscs,civil
-      ALLOWED_CASE_TYPES: asylum,wacasetype,sscs,civil
+      ALLOWED_JURISDICTIONS: wa,ia,sscs,civil,EMPLOYMENT
+      ALLOWED_CASE_TYPES: asylum,wacasetype,sscs,civil,,ET_EnglandWales,ET_EnglandWales_Listings,ET_EnglandWales_Multiple,ET_Scotland,ET_Scotland_Listings,ET_Scotland_Multiple,ET_Admin
       WA_S2S_AUTHORIZED_SERVICES: ccd,ccd_data,ccd_gw,ccd_ps,iac,wa_task_management_api,xui_webapp,wa_task_monitor,camunda_bpm,wa_workflow_api
       LAUNCH_DARKLY_SDK_KEY: "${LAUNCH_DARKLY_SDK_KEY}"
       WA_SYSTEM_USERNAME: "${WA_SYSTEM_USERNAME}"
       WA_SYSTEM_PASSWORD: "${WA_SYSTEM_PASSWORD}"
+      # Uncomment this line to enable JVM debugging and uncomment the port mapping below
+      JAVA_TOOL_OPTIONS: -XX:InitialRAMPercentage=30.0 -XX:MaxRAMPercentage=65.0 -XX:MinRAMPercentage=30.0 -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5006
     ports:
       - 8087:8087
+      # Uncomment this and the JAVA_TOOL_OPTIONS flag for JVM debugging
+      - 5006:5006
     depends_on:
       - ccd-shared-database-v11
       - service-auth-provider-api
@@ -377,14 +381,50 @@ services:
       PENDING_TERMINATION_CAMUNDA_MAX_RESULTS: 1
       WA_SYSTEM_USERNAME: "${WA_SYSTEM_USERNAME}"
       WA_SYSTEM_PASSWORD: "${WA_SYSTEM_PASSWORD}"
+      # Uncomment this line to enable JVM debugging and uncomment the port mapping below
+      JAVA_TOOL_OPTIONS: -XX:InitialRAMPercentage=30.0 -XX:MaxRAMPercentage=65.0 -XX:MinRAMPercentage=30.0 -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5007
     ports:
       - 8077:8077
+      # Uncomment this and the JAVA_TOOL_OPTIONS flag for JVM debugging
+      - 5007:5007
     depends_on:
       - service-auth-provider-api
       - case-event-handler
       - wa-task-management-api
       - ccd-elasticsearch
       - am-role-assignment-service
+    networks:
+      - ccd-network
+
+  ts-translation-service:
+    build:
+      context: .
+      args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+    image: "${TS_TRANSLATION_SERVICE_USE_LOCAL-hmctspublic.azurecr.io/}ts/translation-service:${TS_TRANSLATION_SERVICE_TAG:-latest}"
+    container_name: translation-service
+    environment:
+      TS_TRANSLATION_SERVICE_DB_HOST: ccd-shared-database-v11
+      TS_TRANSLATION_SERVICE_DB_PORT: 5432
+      TS_TRANSLATION_SERVICE_DB_NAME: ts_translation_service
+      TS_TRANSLATION_SERVICE_DB_USERNAME: ${DB_USERNAME}
+      TS_TRANSLATION_SERVICE_DB_PASSWORD: ${DB_PASSWORD}
+      IDAM_API_URL: "${IDAM_STUB_SERVICE_NAME:-http://idam-api:5000}"
+      IDAM_OIDC_URL: "${IDAM_STUB_SERVICE_NAME:-http://idam-api:5000}"
+      TS_TRANSLATION_SERVICE_S2S_AUTHORISED_SERVICES: xui_webapp,ccd_admin,ccd_definition
+      S2S_URL: http://service-auth-provider-api:8080
+      REFORM_SERVICE_NAME: ts-translation-service
+      REFORM_TEAM: ts
+      REFORM_ENVIRONMENT: local
+      TESTING_SUPPORT_ENABLED: "${TESTING_SUPPORT_ENABLED:-true}"
+      APPINSIGHTS_INSTRUMENTATIONKEY: key
+    ports:
+      - "4650:4650"
+    depends_on:
+      - ccd-shared-database-v11
+      - service-auth-provider-api
     networks:
       - ccd-network
 
