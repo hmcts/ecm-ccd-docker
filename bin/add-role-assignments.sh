@@ -6,8 +6,10 @@ dir=$(dirname ${0})
 
 jq -c '(.[])' ${dir}/am-role-assignments.json | while read user; do
   email=$(jq -r '.email' <<< $user)
-  idamUser=$(${dir}/utils/idam-get-user.sh $email)
-  idamId=$(jq -r '.id' <<< $idamUser)
+  #idamUser=$(${dir}/utils/idam-get-user.sh $email)
+  #idamId=$(jq -r '.id' <<< $idamUser)
+  token=$(${dir}/utils/idam-user-token2.sh $email)
+  idamId=$(${dir}/utils/idam-user-id2.sh $token)
 
   override=$(jq -r '.overrideAll' <<< $user)
   if [ $override == 'true' ]; then

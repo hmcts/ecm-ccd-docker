@@ -1,32 +1,7 @@
 [
   {
-    "email": "auto.test.cnp@gmail.com", 
-    "roleAssignments": [
-      {
-        "roleType": "ORGANISATION",
-        "roleName": "staff",
-        "grantType": "STANDARD",
-        "roleCategory": "LEGAL_OPERATIONS",
-        "classification": "PUBLIC",
-        "readOnly": false,
-        "attributes": { "caseType": "AAT", "jurisdiction": "AUTOTEST1" },
-        "authorisations": []
-      },
-      {
-        "roleType": "ORGANISATION",
-        "roleName": "staff",
-        "grantType": "STANDARD",
-        "roleCategory": "LEGAL_OPERATIONS",
-        "classification": "PUBLIC",
-        "readOnly": false,
-        "attributes": { "caseType": "MAPPER", "jurisdiction": "AUTOTEST1" },
-        "authorisations": []
-      }
-    ], 
-    "overrideAll": true 
-  },
-  {
     "email": "et.dev@hmcts.net",
+    "id": "742b9798-e552-3495-bb86-23431260031c",
     "roleAssignments": [
       {
         "roleType": "ORGANISATION",
@@ -37,7 +12,27 @@
         "readOnly": false,
         "attributes": {
           "caseType": "ET_EnglandWales",
-          "jurisdiction": "ET"
+          "jurisdiction": "EMPLOYMENT"
+        },
+        "authorisations": []
+      }
+    ],
+    "overrideAll": true
+  },
+  {
+    "email": "wa-system-user@fake.hmcts.net",
+    "id": "907465a8-3b5d-3d34-ae6a-530881ae691f",
+    "roleAssignments": [
+      {
+        "roleType": "ORGANISATION",
+        "roleName": "judge",
+        "grantType": "STANDARD",
+        "roleCategory": "JUDICIAL",
+        "classification": "PUBLIC",
+        "readOnly": false,
+        "attributes": {
+          "caseType": "ET_EnglandWales",
+          "jurisdiction": "EMPLOYMENT"
         },
         "authorisations": []
       }

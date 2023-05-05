@@ -30,7 +30,7 @@
   },
   {
     "email": "wa-system-user@fake.hmcts.net",
-    "roles": "caseworker,caseworker-employment,caseworker-employment-englandwales,caseworker-employment-scotland,caseworker-employment-api,citizen,caseworker-wa,caseworker-wa-task-configuration",
+    "roles": "caseworker,caseworker-employment,caseworker-employment-englandwales,caseworker-employment-scotland,caseworker-employment-api,citizen,caseworker-wa,caseworker-wa-task-configuration,caseworker-employment-etjudge",
     "lastName": "Service Account",
     "firstName": "ET"
   },
