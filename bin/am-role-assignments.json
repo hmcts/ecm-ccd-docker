@@ -1,7 +1,7 @@
 [
   {
-    "email": "et.dev@hmcts.net",
-    "id": "742b9798-e552-3495-bb86-23431260031c",
+    "email": "wa-system-user@fake.hmcts.net",
+    "id": "907465a8-3b5d-3d34-ae6a-530881ae691f",
     "roleAssignments": [
       {
         "roleType": "ORGANISATION",
@@ -15,13 +15,39 @@
           "jurisdiction": "EMPLOYMENT"
         },
         "authorisations": []
+      },
+      {
+        "roleType": "ORGANISATION",
+        "roleName": "hearing-centre-team-leader",
+        "grantType": "STANDARD",
+        "roleCategory": "ADMIN",
+        "classification": "PUBLIC",
+        "readOnly": false,
+        "attributes": {
+          "caseType": "ET_EnglandWales",
+          "jurisdiction": "EMPLOYMENT"
+        },
+        "authorisations": []
+      },
+      {
+        "roleType": "ORGANISATION",
+        "roleName": "ctsc-team-leader",
+        "grantType": "STANDARD",
+        "roleCategory": "CTSC",
+        "classification": "PUBLIC",
+        "readOnly": false,
+        "attributes": {
+          "caseType": "ET_EnglandWales",
+          "jurisdiction": "EMPLOYMENT"
+        },
+        "authorisations": []
       }
     ],
     "overrideAll": true
   },
   {
-    "email": "wa-system-user@fake.hmcts.net",
-    "id": "907465a8-3b5d-3d34-ae6a-530881ae691f",
+    "email": "et.dev@hmcts.net",
+    "id": "742b9798-e552-3495-bb86-23431260031c",
     "roleAssignments": [
       {
         "roleType": "ORGANISATION",
