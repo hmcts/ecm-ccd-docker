@@ -7,5 +7,4 @@ jq -c '(.[])' ${dir}/ccd-roles.json | while read args; do
   class=$(jq -r '.security_classification' <<< $args)
   echo Creating/updating CCD role $role with classification $class
   ${dir}/ccd-add-role.sh $role $class
-  echo
 done

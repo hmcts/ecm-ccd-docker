@@ -4,8 +4,10 @@ set -eu
 dir=$(dirname ${0})
 
 ${dir}/../add-users.sh
+echo
 
 ${dir}/../add-ccd-roles.sh
+echo
 
 ${dir}/../add-role-assignments.sh
 
