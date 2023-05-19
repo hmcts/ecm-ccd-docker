@@ -5,6 +5,19 @@
     "roleAssignments": [
       {
         "roleType": "ORGANISATION",
+        "roleName": "senior-tribunal-caseworker",
+        "grantType": "STANDARD",
+        "roleCategory": "LEGAL_OPERATIONS",
+        "classification": "PUBLIC",
+        "readOnly": false,
+        "attributes": {
+          "caseType": "ET_EnglandWales",
+          "jurisdiction": "EMPLOYMENT"
+        },
+        "authorisations": []
+      },
+      {
+        "roleType": "ORGANISATION",
         "roleName": "judge",
         "grantType": "STANDARD",
         "roleCategory": "JUDICIAL",
