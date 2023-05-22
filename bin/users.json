@@ -54,13 +54,13 @@
   },
   {
     "email": "solicitor1@etorganisation1.com",
-    "roles": "caseworker,caseworker-employment,caseworker-employment-legalrep-solicitor",
+    "roles": "caseworker,caseworker-employment,caseworker-employment-legalrep-solicitor,pui-case-manager,caseworker-divorce-solicitor",
     "lastName": "Organisation1",
     "firstName": "Solicitor1"
   },
   {
     "email": "solicitor2@etorganisation1.com",
-    "roles": "caseworker,caseworker-employment,caseworker-employment-legalrep-solicitor",
+    "roles": "caseworker,caseworker-employment,caseworker-employment-legalrep-solicitor,pui-case-manager,caseworker-divorce-solicitor",
     "lastName": "Organisation1",
     "firstName": "Solicitor2"
   },
@@ -72,13 +72,13 @@
   },
   {
     "email": "solicitor1@etorganisation2.com",
-    "roles": "caseworker,caseworker-employment,caseworker-employment-legalrep-solicitor",
+    "roles": "caseworker,caseworker-employment,caseworker-employment-legalrep-solicitor,pui-case-manager,caseworker-divorce-solicitor",
     "lastName": "Organisation2",
     "firstName": "Solicitor1"
   },
   {
     "email": "solicitor2@etorganisation2.com",
-    "roles": "caseworker,caseworker-employment,caseworker-employment-legalrep-solicitor",
+    "roles": "caseworker,caseworker-employment,caseworker-employment-legalrep-solicitor,pui-case-manager,caseworker-divorce-solicitor",
     "lastName": "Organisation2",
     "firstName": "Solicitor2"
   },
