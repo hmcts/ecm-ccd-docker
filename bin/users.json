@@ -36,7 +36,7 @@
   },
   {
     "email": "et.service@hmcts.net",
-    "roles": "caseworker,caseworker-employment,caseworker-employment-api",
+    "roles": "caseworker,caseworker-employment,caseworker-employment-api,pui-user-manager,prd-admin,caseworker-caa",
     "lastName": "Service Account",
     "firstName": "ET"
   },
@@ -54,13 +54,13 @@
   },
   {
     "email": "solicitor1@etorganisation1.com",
-    "roles": "caseworker,caseworker-employment,caseworker-employment-legalrep-solicitor,pui-case-manager,pui-caa,caseworker-caa,pui-organisation-manager,caseworker-divorce-solicitor",
+    "roles": "caseworker,caseworker-employment,caseworker-employment-legalrep-solicitor,pui-case-manager,caseworker-divorce-solicitor",
     "lastName": "Organisation1",
     "firstName": "Solicitor1"
   },
   {
     "email": "solicitor2@etorganisation1.com",
-    "roles": "caseworker,caseworker-employment,caseworker-employment-legalrep-solicitor,pui-case-manager",
+    "roles": "caseworker,caseworker-employment,caseworker-employment-legalrep-solicitor,pui-case-manager,caseworker-divorce-solicitor",
     "lastName": "Organisation1",
     "firstName": "Solicitor2"
   },
@@ -72,13 +72,13 @@
   },
   {
     "email": "solicitor1@etorganisation2.com",
-    "roles": "caseworker,caseworker-employment,caseworker-employment-legalrep-solicitor,pui-case-manager",
+    "roles": "caseworker,caseworker-employment,caseworker-employment-legalrep-solicitor,pui-case-manager,caseworker-divorce-solicitor",
     "lastName": "Organisation2",
     "firstName": "Solicitor1"
   },
   {
     "email": "solicitor2@etorganisation2.com",
-    "roles": "caseworker,caseworker-employment,caseworker-employment-legalrep-solicitor,pui-case-manager",
+    "roles": "caseworker,caseworker-employment,caseworker-employment-legalrep-solicitor,pui-case-manager,caseworker-divorce-solicitor",
     "lastName": "Organisation2",
     "firstName": "Solicitor2"
   },
