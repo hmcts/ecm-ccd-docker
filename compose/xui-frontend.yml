@@ -30,7 +30,8 @@ services:
       REDISCLOUD_URL: http://localhost:6780
       SYSTEM_USER_NAME: "dummy"
       SYSTEM_USER_PASSWORD: "dummy"      
-      SERVICES_CCD_CASE_ASSIGNMENT_API: http://manage-case-assignment:4454      
+      SERVICES_CCD_CASE_ASSIGNMENT_API: http://manage-case-assignment:4454
+      SERVICES_PRD_COMMONDATA_API: http://host.docker.internal:4507
 
       HEALTH_CCD_COMPONENT_API: http://ccd-api-gateway:3453/health
       HEALTH_CCD_DATA_API: http://ccd-data-store-api:4452/health
