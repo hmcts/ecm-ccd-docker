@@ -36,7 +36,7 @@
   },
   {
     "email": "et.caseworker@hmcts.net",
-    "roles": "caseworker,caseworker-employment,caseworker-employment-englandwales,caseworker-employment-scotland",
+    "roles": "caseworker,caseworker-employment,caseworker-employment-englandwales,caseworker-employment-scotland,caseworker-wa,caseworker-wa-task-configuration",
     "lastName": "Caseworker",
     "firstName": "ET"
   },
