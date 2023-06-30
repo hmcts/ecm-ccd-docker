@@ -68,7 +68,7 @@ services:
       - ccd-network
 
   azure-storage-emulator-azurite:
-    image: arafato/azurite
+    image: mcr.microsoft.com/azure-storage/azurite
     ports:
       - 10000:10000
     environment:
