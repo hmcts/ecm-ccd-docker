@@ -35,6 +35,24 @@
     "firstName": "ET"
   },
   {
+    "email": "et.judge@hmcts.net",
+    "roles": "caseworker,caseworker-employment-etjudge,caseworker-employment-etjudge-englandwales,caseworker-employment-etjudge-scotland",
+    "lastName": "EwSc",
+    "firstName": "Judge"
+  },
+  {
+    "email": "et.judge.ew@hmcts.net",
+    "roles": "caseworker,caseworker-employment-etjudge,caseworker-employment-etjudge-englandwales",
+    "lastName": "Ew",
+    "firstName": "ET"
+  },
+  {
+    "email": "et.judge.sc@hmcts.net",
+    "roles": "caseworker,caseworker-employment-etjudge,caseworker-employment-etjudge-scotland",
+    "lastName": "Sc",
+    "firstName": "ET"
+  },
+  {
     "email": "et.service@hmcts.net",
     "roles": "caseworker,caseworker-employment,caseworker-employment-api,pui-user-manager,prd-admin,caseworker-caa",
     "lastName": "Service Account",
