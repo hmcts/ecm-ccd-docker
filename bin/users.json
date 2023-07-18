@@ -111,5 +111,11 @@
     "roles": "caseworker,caseworker-approver,prd-aac-system,prd-admin",
     "lastName": "Service Account",
     "firstName": "ET"
+  },
+  {
+    "email": "et.citizen@hmcts.net",
+    "roles": "citizen",
+    "lastName": "Citizen",
+    "firstName": "ET"
   }
 ]
