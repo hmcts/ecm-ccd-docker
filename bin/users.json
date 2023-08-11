@@ -51,5 +51,18 @@
     "roles": "ccd-import,manage-user,caseworker",
     "lastName": "Service Account",
     "firstName": "ET"
+  },
+  {
+    "email": "role.assignment.admin@gmail.com",
+    "roles": "caseworker,caseworker-ras-validation,caseworker-wa,caseworker-wa-task-configuration",
+    "lastName": "Account",
+    "firstName": "Service"
+  },
+  {
+    "email": "et.caseadmin@hmcts.net",
+    "roles": "caseworker,caseworker-employment,caseworker-employment-englandwales,caseworker-employment-scotland,caseworker-wa,caseworker-wa-task-configuration",
+    "lastName": "Caseworker",
+    "firstName": "ET"
   }
+
 ]

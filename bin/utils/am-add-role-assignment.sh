@@ -10,7 +10,7 @@ grantType=${5}
 roleCategory=${6}
 readOnly=${7}
 startTime="now()"
-endTime="now() + interval '10 years'"
+endTime="now() + interval '15 years'"
 attributes=${8}
 authorisations=${9}
 

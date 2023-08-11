@@ -147,7 +147,7 @@ services:
       LD_SDK_KEY:
       ROLE_ASSIGNMENT_IDAM_KEY:
       ROLE_ASSIGNMENT_TOKEN_SECRET:
-      ROLE_ASSIGNMENT_S2S_AUTHORISED_SERVICES: ccd_gw,am_role_assignment_service,am_org_role_mapping_service,wa_task_management_api,xui_webapp,ccd_data
+      ROLE_ASSIGNMENT_S2S_AUTHORISED_SERVICES: ccd_gw,am_role_assignment_service,am_org_role_mapping_service,wa_task_management_api,xui_webapp,ccd_data,wa_task_monitor,wa_case_event_handler
       IDAM_USER_URL: "${IDAM_STUB_SERVICE_NAME:-http://idam-api:5000}"
       IDAM_S2S_URL: http://service-auth-provider-api:8080
       OPEN_ID_API_BASE_URI: "${IDAM_STUB_SERVICE_NAME:-http://idam-api:5000}/o"
@@ -273,7 +273,7 @@ services:
       POSTGRES_NAME: wa_workflow_api
       POSTGRES_USERNAME: "${DB_USERNAME:-postgres}"
       POSTGRES_PASSWORD: "${DB_PASSWORD:-postgres}"
-      WA_S2S_AUTHORIZED_SERVICES: wa_workflow_api,wa_case_event_handler,camunda-local-bpm,xui_webapp
+      WA_S2S_AUTHORIZED_SERVICES: wa_workflow_api,wa_case_event_handler,camunda-local-bpm,xui_webapp,wa_task_monitor,wa_case_event_handler
       LAUNCH_DARKLY_SDK_KEY: "${LAUNCH_DARKLY_SDK_KEY}"
     ports:
       - 8099:8099
@@ -301,9 +301,11 @@ services:
       ROLE_ASSIGNMENT_URL: http://am-role-assignment-service:4096
       POSTGRES_PORT: 5432
       POSTGRES_NAME: cft_task_db
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: admin
       ALLOWED_JURISDICTIONS: wa,ia,sscs,civil,EMPLOYMENT
       ALLOWED_CASE_TYPES: asylum,wacasetype,sscs,civil,ET_EnglandWales,ET_EnglandWales_Listings,ET_EnglandWales_Multiple,ET_Scotland,ET_Scotland_Listings,ET_Scotland_Multiple,ET_Admin
-      WA_S2S_AUTHORIZED_SERVICES: ccd,ccd_data,ccd_gw,ccd_ps,iac,wa_task_management_api,xui_webapp,wa_task_monitor,camunda_bpm,wa_workflow_api
+      WA_S2S_AUTHORIZED_SERVICES: ccd,ccd_data,ccd_gw,ccd_ps,iac,wa_task_management_api,xui_webapp,wa_task_monitor,camunda_bpm,wa_workflow_api,wa_case_event_handler
       LAUNCH_DARKLY_SDK_KEY: "${LAUNCH_DARKLY_SDK_KEY}"
       WA_SYSTEM_USERNAME: "${WA_SYSTEM_USERNAME}"
       WA_SYSTEM_PASSWORD: "${WA_SYSTEM_PASSWORD}"
@@ -340,6 +342,8 @@ services:
       ROLE_ASSIGNMENT_URL: http://am-role-assignment-service:4096
       CAMUNDA_URL: http://camunda-local-bpm:8999/engine-rest
       CCD_URL: http://ccd-data-store-api:4452
+      TASK_MANAGEMENT_SERVICE_URL: http://wa-task-management-api:8087
+      WA_TASK_MANAGEMENT_API_URL: http://wa-task-management-api:8087
       AZURE_SERVICE_BUS_FEATURE_TOGGLE: "true"
       AZURE_SERVICE_BUS_DLQ_FEATURE_TOGGLE: "true"
       AZURE_SERVICE_BUS_CONCURRENT_SESSIONS: 2
