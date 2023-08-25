@@ -76,7 +76,7 @@ services:
       DATA_STORE_TOKEN_SECRET: iuasbcuasdcbasdgcasdgcuysachjsacyasdgjcgasdj
       DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_gw,ccd_gateway,fpl_case_service,ccd_data,ccd_ps,aac_manage_case_assignment,
         xui_webapp,ccd_case_document_am_api,am_role_assignment_service,
-        ethos_repl_docmosis_service,ecm_consumer,et_cos,et_msg_handler,et_sya_api
+        ethos_repl_docmosis_service,ecm_consumer,et_cos,et_msg_handler,et_sya_api,et_hearings_api
       CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: aac_manage_case_assignment,et_cos  
       DATA_STORE_CROSS_JURISDICTIONAL_ROLES: caseworker-caa,caseworker-approver
       DEFINITION_STORE_HOST: http://ccd-definition-store-api:4451
@@ -193,6 +193,7 @@ services:
       MICROSERVICEKEYS_ET_COS: "${IDAM_KEY_ET_COS}"
       MICROSERVICEKEYS_ET_SYA_API: "${IDAM_KEY_ET_SYA_API}"
       MICROSERVICEKEYS_ET_MSG_HANDLER: "${IDAM_KEY_ET_MSG_HANDLER}"
+      MICROSERVICEKEYS_ET_HEARINGS_API: "${IDAM_KEY_ET_HEARINGS_API}"
       TESTING_SUPPORT_ENABLED: "true"
     networks:
       - ccd-network
