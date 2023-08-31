@@ -49,7 +49,7 @@ services:
       DEFINITION_STORE_DB_PASSWORD: "${DB_PASSWORD}"
       DEFINITION_STORE_DB_USE_SSL: "${DB_USE_SSL}"
       DEFINITION_STORE_IDAM_KEY: "${IDAM_KEY_CCD_DEFINITION_STORE}"
-      DEFINITION_STORE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_gw,ccd_admin,aac_manage_case_assignment
+      DEFINITION_STORE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_gw,ccd_admin,aac_manage_case_assignment,wa_task_management_api,wa_task_monitor,wa_case_event_handler
       USER_PROFILE_HOST: http://ccd-user-profile-api:4453
       IDAM_USER_URL: "${IDAM_STUB_SERVICE_NAME:-http://idam-api:5000}"
       IDAM_S2S_URL: http://service-auth-provider-api:8080
@@ -147,7 +147,7 @@ services:
       LD_SDK_KEY:
       ROLE_ASSIGNMENT_IDAM_KEY:
       ROLE_ASSIGNMENT_TOKEN_SECRET:
-      ROLE_ASSIGNMENT_S2S_AUTHORISED_SERVICES: ccd_gw,am_role_assignment_service,am_org_role_mapping_service,wa_task_management_api,xui_webapp,ccd_data,wa_task_monitor,wa_case_event_handler
+      ROLE_ASSIGNMENT_S2S_AUTHORISED_SERVICES: ccd_gw,am_role_assignment_service,am_org_role_mapping_service,wa_task_management_api,xui_webapp,ccd_data,wa_workflow_api,wa_case_event_handler,wa_task_monitor,xui_manage_cases,et_cos
       IDAM_USER_URL: "${IDAM_STUB_SERVICE_NAME:-http://idam-api:5000}"
       IDAM_S2S_URL: http://service-auth-provider-api:8080
       OPEN_ID_API_BASE_URI: "${IDAM_STUB_SERVICE_NAME:-http://idam-api:5000}/o"
@@ -273,10 +273,13 @@ services:
       POSTGRES_NAME: wa_workflow_api
       POSTGRES_USERNAME: "${DB_USERNAME:-postgres}"
       POSTGRES_PASSWORD: "${DB_PASSWORD:-postgres}"
-      WA_S2S_AUTHORIZED_SERVICES: wa_workflow_api,wa_case_event_handler,camunda-local-bpm,xui_webapp,wa_task_monitor,wa_case_event_handler
+      WA_S2S_AUTHORIZED_SERVICES: wa_workflow_api,wa_case_event_handler,camunda-local-bpm,xui_webapp,wa_task_management_api,wa_task_monitor,wa_case_event_handler
       LAUNCH_DARKLY_SDK_KEY: "${LAUNCH_DARKLY_SDK_KEY}"
+      #JAVA_TOOL_OPTIONS: -XX:InitialRAMPercentage=30.0 -XX:MaxRAMPercentage=65.0 -XX:MinRAMPercentage=30.0 -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5009
+      ROOT_LOGGING_LEVEL: debug
     ports:
       - 8099:8099
+      #- 5009:5009
     depends_on:
       - ccd-shared-database-v11
       - service-auth-provider-api
@@ -301,11 +304,11 @@ services:
       ROLE_ASSIGNMENT_URL: http://am-role-assignment-service:4096
       POSTGRES_PORT: 5432
       POSTGRES_NAME: cft_task_db
-      POSTGRES_USERNAME: postgres
-      POSTGRES_PASSWORD: admin
+      POSTGRES_USERNAME: "${POSTGRES_USERNAME}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
       ALLOWED_JURISDICTIONS: wa,ia,sscs,civil,EMPLOYMENT
       ALLOWED_CASE_TYPES: asylum,wacasetype,sscs,civil,ET_EnglandWales,ET_EnglandWales_Listings,ET_EnglandWales_Multiple,ET_Scotland,ET_Scotland_Listings,ET_Scotland_Multiple,ET_Admin
-      WA_S2S_AUTHORIZED_SERVICES: ccd,ccd_data,ccd_gw,ccd_ps,iac,wa_task_management_api,xui_webapp,wa_task_monitor,camunda_bpm,wa_workflow_api,wa_case_event_handler
+      WA_S2S_AUTHORIZED_SERVICES: ccd,ccd_data,ccd_gw,ccd_ps,iac,wa_task_management_api,xui_webapp,wa_task_monitor,camunda_bpm,wa_workflow_api,wa_case_event_handler,xui_manage_cases,et_cos,xui_webapp
       LAUNCH_DARKLY_SDK_KEY: "${LAUNCH_DARKLY_SDK_KEY}"
       WA_SYSTEM_USERNAME: "${WA_SYSTEM_USERNAME}"
       WA_SYSTEM_PASSWORD: "${WA_SYSTEM_PASSWORD}"
@@ -352,8 +355,11 @@ services:
       MESSAGE_READINESS_POLL_INTERVAL_MILLISECONDS: 500
       MESSAGE_READINESS_THREAD_POOL_SIZE: 2
       LAUNCH_DARKLY_SDK_KEY: "${LAUNCH_DARKLY_SDK_KEY}"
+      #JAVA_TOOL_OPTIONS: -XX:InitialRAMPercentage=30.0 -XX:MaxRAMPercentage=65.0 -XX:MinRAMPercentage=30.0 -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5007
+      #ROOT_LOGGING_LEVEL: debug
     ports:
       - 8088:8088
+      #- 5007:5007
     depends_on:
       - ccd-shared-database-v11
       - service-auth-provider-api
@@ -390,6 +396,7 @@ services:
       PENDING_TERMINATION_CAMUNDA_MAX_RESULTS: 1
       WA_SYSTEM_USERNAME: "${WA_SYSTEM_USERNAME}"
       WA_SYSTEM_PASSWORD: "${WA_SYSTEM_PASSWORD}"
+      # ROOT_LOGGING_LEVEL: debug
       # Uncomment this line to enable JVM debugging and uncomment the port mapping below
       #JAVA_TOOL_OPTIONS: -XX:InitialRAMPercentage=30.0 -XX:MaxRAMPercentage=65.0 -XX:MinRAMPercentage=30.0 -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5007
     ports:
