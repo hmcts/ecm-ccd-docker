@@ -306,8 +306,8 @@ services:
       POSTGRES_NAME: cft_task_db
       POSTGRES_USERNAME: "${POSTGRES_USERNAME}"
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
-      ALLOWED_JURISDICTIONS: wa,ia,sscs,civil,EMPLOYMENT
-      ALLOWED_CASE_TYPES: asylum,wacasetype,sscs,civil,ET_EnglandWales,ET_EnglandWales_Listings,ET_EnglandWales_Multiple,ET_Scotland,ET_Scotland_Listings,ET_Scotland_Multiple,ET_Admin
+      ALLOWED_JURISDICTIONS: wa,ia,sscs,civil,employment
+      ALLOWED_CASE_TYPES: asylum,wacasetype,sscs,civil,et_englandwales,et_englandwales_listings,et_englandwales_multiple,et_scotland,et_scotland_listings,et_scotland_multiple,et_admin
       WA_S2S_AUTHORIZED_SERVICES: ccd,ccd_data,ccd_gw,ccd_ps,iac,wa_task_management_api,xui_webapp,wa_task_monitor,camunda_bpm,wa_workflow_api,wa_case_event_handler,xui_manage_cases,et_cos,xui_webapp
       LAUNCH_DARKLY_SDK_KEY: "${LAUNCH_DARKLY_SDK_KEY}"
       WA_SYSTEM_USERNAME: "${WA_SYSTEM_USERNAME}"
