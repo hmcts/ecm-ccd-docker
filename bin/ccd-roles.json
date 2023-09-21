@@ -50,5 +50,6 @@
   { "role": "caseworker-caa", "security_classification": "PUBLIC" },
   { "role": "caseworker-wa", "security_classification": "PUBLIC" },
   { "role": "caseworker-wa-task-configuration", "security_classification": "PUBLIC" },
-  { "role": "caseworker-wa-task-officer", "security_classification": "PUBLIC" }
+  { "role": "caseworker-wa-task-officer", "security_classification": "PUBLIC" },
+  { "role": "GS_profile", "security_classification": "PUBLIC" }
 ]
