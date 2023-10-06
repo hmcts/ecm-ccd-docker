@@ -191,5 +191,3 @@ EXUI_CASE_DETAILS_URL=http://localhost:3455/cases/case-details/
 CITIZEN_CASE_DETAILS_URL=http://localhost:3001/citizen-hub/
 POSTGRES_USERNAME=postgres
 POSTGRES_PASSWORD=admin
-
-XUI_MANAGE_CASES_TAG=pr-3110
